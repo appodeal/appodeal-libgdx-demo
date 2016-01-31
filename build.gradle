@@ -1,0 +1,106 @@
+buildscript {
+    repositories {
+        mavenCentral()
+        mavenLocal()
+        maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:1.2.3'
+        classpath 'org.robovm:robovm-gradle-plugin:1.5.0'
+    }
+}
+
+allprojects {
+    apply plugin: "eclipse"
+    apply plugin: "idea"
+    apply plugin: "maven"
+
+    group = 'com.appodeal.gdx'
+    version = '1.0.0'
+
+    ext {
+        appName = 'gdx-appodeal'
+        testAppName = 'gdx-appodeal-test'
+        gdxVersion = '1.6.4'
+        roboVMVersion = '1.5.0'
+        appcompat_library_version = '20.0.+'
+        support_library_version = '20.0.+'
+        gms_library_version = '6.5+'
+    }
+
+    repositories {
+        mavenCentral()
+        mavenLocal()
+        maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
+        maven { url "https://oss.sonatype.org/content/repositories/releases/" }
+    }
+}
+
+/*GdxAppodeal*/
+project(":gdx-appodeal-core") {
+    apply plugin: "java"
+
+    dependencies {
+        compile "com.badlogicgames.gdx:gdx:$gdxVersion"
+    }
+}
+
+project(":gdx-appodeal-android") {
+    apply plugin: "android-library"
+
+    configurations { natives }
+
+    dependencies {
+        compile project(":gdx-appodeal-core")
+        compile "com.badlogicgames.gdx:gdx-backend-android:$gdxVersion"
+        compile ('com.google.android.gms:play-services-ads:8.1.0') {
+            exclude module: 'support-v4'
+        }
+        compile fileTree(dir: 'libs', include: '*.jar')
+    }
+
+    task installArchives(type: Upload) {
+        description "Installs the artifacts to the local Maven repository."
+        repositories.mavenInstaller {
+            configuration = configurations.default
+            pom.groupId = 'com.appodeal.gdx'
+            pom.artifactId = 'gdx-appodeal-android'
+            pom.version = '1.14.6'
+        }
+    }
+}
+
+/*Test*/
+project(":test-core") {
+    apply plugin: "java"
+
+    dependencies {
+        compile project(":gdx-appodeal-core")
+    }
+}
+
+project(":test-android") {
+    apply plugin: "android"
+
+    configurations { natives }
+
+    dependencies {
+        compile project(":gdx-appodeal-android")
+        compile project(":test-core")
+    }
+}
+
+project(":test-desktop") {
+    apply plugin: "java"
+
+    dependencies {
+        compile project(":test-core")
+        compile "com.badlogicgames.gdx:gdx-backend-lwjgl:$gdxVersion"
+        compile "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-desktop"
+        compile "com.badlogicgames.gdx:gdx-tools:$gdxVersion"
+    }
+}
+
+tasks.eclipse.doLast {
+    delete ".project"
+}

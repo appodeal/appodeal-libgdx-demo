@@ -75,11 +75,11 @@ public class AndroidGdxAppodeal extends GdxAppodeal implements BannerCallbacks, 
     }
 
     @Override
-    public void showWithPriceFloor(final int type) {
+    public void showWithPlacement(final int type, final String placement) {
         activity.runOnUiThread(new Runnable() {
             @Override
             public void run() {
-                Appodeal.showWithPriceFloor(activity, type);
+                Appodeal.show(activity, type, placement);
             }
         });
     }
@@ -97,11 +97,6 @@ public class AndroidGdxAppodeal extends GdxAppodeal implements BannerCallbacks, 
     @Override
     public boolean isLoaded(int type) {
         return Appodeal.isLoaded(type);
-    }
-
-    @Override
-    public boolean isLoadedWithPriceFloor(int type) {
-        return Appodeal.isLoadedWithPriceFloor(type);
     }
 
     @Override

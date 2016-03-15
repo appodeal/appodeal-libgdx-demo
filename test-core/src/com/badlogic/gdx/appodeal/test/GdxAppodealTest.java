@@ -66,7 +66,7 @@ public class GdxAppodealTest extends ApplicationAdapter {
                 final int type = cboAdType.getSelected().getValue();
                 switch (option) {
                     case Show:
-                        GdxAppodeal.getInstance().show(type);
+                        GdxAppodeal.getInstance().showWithPlacement(type, "level_end");
                         break;
                     case IsLoaded:
                         showMessage(GdxAppodeal.getInstance().isLoaded(type) ? "yes" : "no");

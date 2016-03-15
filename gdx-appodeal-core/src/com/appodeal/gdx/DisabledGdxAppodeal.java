@@ -45,7 +45,7 @@ public class DisabledGdxAppodeal extends GdxAppodeal {
     }
 
     @Override
-    public void showWithPriceFloor(int type) {
+    public void showWithPlacement(int type, String placement) {
         disabledMessage();
     }
 
@@ -62,11 +62,6 @@ public class DisabledGdxAppodeal extends GdxAppodeal {
     @Override
     public boolean isLoaded(int type) {
         disabledMessage();
-        return false;
-    }
-
-    @Override
-    public boolean isLoadedWithPriceFloor(int type) {
         return false;
     }
 

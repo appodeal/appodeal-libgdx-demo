@@ -1,2 +1,1 @@
-include 'gdx-appodeal-android', 'gdx-appodeal-core'
-include 'test-desktop', 'test-android', 'test-core'
+include 'android', 'ios', 'core'

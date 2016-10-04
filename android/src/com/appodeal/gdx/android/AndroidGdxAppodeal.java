@@ -8,15 +8,18 @@ import com.appodeal.ads.InterstitialCallbacks;
 import com.appodeal.ads.NonSkippableVideoCallbacks;
 import com.appodeal.ads.RewardedVideoCallbacks;
 import com.appodeal.ads.SkippableVideoCallbacks;
+import com.appodeal.ads.utils.PermissionsHelper;
 import com.appodeal.gdx.AppodealInterface;
 import com.appodeal.gdx.callbacks.BannerCallback;
 import com.appodeal.gdx.callbacks.InterstitialCallback;
 import com.appodeal.gdx.callbacks.NonSkippableVideoCallback;
+import com.appodeal.gdx.callbacks.PermissionCallback;
 import com.appodeal.gdx.callbacks.RewardedVideoCallback;
 import com.appodeal.gdx.callbacks.SkippableVideoCallback;
+import com.appodeal.gdx.data.UserSettings;
 import com.badlogic.gdx.Gdx;
 
-public class AndroidGdxAppodeal  implements AppodealInterface, BannerCallbacks, InterstitialCallbacks, SkippableVideoCallbacks, RewardedVideoCallbacks, NonSkippableVideoCallbacks {
+public class AndroidGdxAppodeal  implements AppodealInterface, BannerCallbacks, InterstitialCallbacks, SkippableVideoCallbacks, RewardedVideoCallbacks, NonSkippableVideoCallbacks, PermissionsHelper.AppodealPermissionCallbacks {
     private final Activity activity;
 
     private InterstitialCallback interstitialListener;
@@ -24,6 +27,8 @@ public class AndroidGdxAppodeal  implements AppodealInterface, BannerCallbacks, 
     private SkippableVideoCallback skippableVideoListener;
     private NonSkippableVideoCallback nonSkippableVideoListener;
     private RewardedVideoCallback rewardedVideoListener;
+    private PermissionCallback permissionListener;
+    private AndroidUserSettings userSettings;
 
     private boolean isShow;
 
@@ -268,5 +273,74 @@ public class AndroidGdxAppodeal  implements AppodealInterface, BannerCallbacks, 
     @Override
     public void onRewardedVideoClosed(boolean isFinished) {
         rewardedVideoListener.onRewardedVideoClosed();
+    }
+
+    public UserSettings getUserSettings(){
+        if(userSettings == null)
+            userSettings = new AndroidUserSettings(activity);
+        return userSettings;
+    }
+
+    @Override
+    public void disableWriteExternalStoragePermissionCheck() {
+        Appodeal.disableWriteExternalStoragePermissionCheck();
+    }
+
+    @Override
+    public void requestAndroidMPermissions(PermissionCallback permissionCallback) {
+        permissionListener = permissionCallback;
+        Appodeal.requestAndroidMPermissions(activity, this);
+    }
+
+    @Override
+    public void writeExternalStorageResponse(int i) {
+        if(permissionListener != null)
+            permissionListener.writeExternalStorageResponse(i);
+    }
+
+    @Override
+    public void accessCoarseLocationResponse(int i) {
+        if(permissionListener != null)
+            permissionListener.accessCoarseLocationResponse(i);
+    }
+
+    @Override
+    public void set728x90Banners(boolean b) {
+        Appodeal.set728x90Banners(b);
+    }
+
+    @Override
+    public void setBannerAnimation(boolean b) {
+        Appodeal.setBannerAnimation(b);
+    }
+
+    @Override
+    public void setCustomRule(String s, boolean b) {
+        Appodeal.setCustomRule(s, b);
+    }
+
+    @Override
+    public void setCustomRule(String s, int i) {
+        Appodeal.setCustomRule(s, i);
+    }
+
+    @Override
+    public void setCustomRule(String s, double v) {
+        Appodeal.setCustomRule(s, v);
+    }
+
+    @Override
+    public void setCustomRule(String s1, String s2) {
+        Appodeal.setCustomRule(s1, s2);
+    }
+
+    @Override
+    public void setSmartBanners(boolean b) {
+        Appodeal.setSmartBanners(b);
+    }
+
+    @Override
+    public void trackInAppPurchase(double v, String s) {
+        Appodeal.trackInAppPurchase(activity, v, s);
     }
 }

@@ -3,8 +3,10 @@ package com.appodeal.gdx;
 import com.appodeal.gdx.callbacks.BannerCallback;
 import com.appodeal.gdx.callbacks.InterstitialCallback;
 import com.appodeal.gdx.callbacks.NonSkippableVideoCallback;
+import com.appodeal.gdx.callbacks.PermissionCallback;
 import com.appodeal.gdx.callbacks.RewardedVideoCallback;
 import com.appodeal.gdx.callbacks.SkippableVideoCallback;
+import com.appodeal.gdx.data.UserSettings;
 import com.badlogic.gdx.Gdx;
 
 import static com.appodeal.gdx.GdxAppodeal.TAG;
@@ -120,6 +122,63 @@ public class DisabledGdxAppodeal implements AppodealInterface {
     public void setLogging(boolean logging) {
         disabledMessage();
     }
+
+    @Override
+    public UserSettings getUserSettings() {
+        disabledMessage();
+        return null;
+    }
+
+    @Override
+    public void disableWriteExternalStoragePermissionCheck() {
+        disabledMessage();
+    }
+
+    @Override
+    public void requestAndroidMPermissions(PermissionCallback permissionCallback) {
+        disabledMessage();
+    }
+
+    @Override
+    public void set728x90Banners(boolean b) {
+        disabledMessage();
+    }
+
+    @Override
+    public void setBannerAnimation(boolean b) {
+        disabledMessage();
+    }
+
+    @Override
+    public void setCustomRule(String s, boolean b) {
+        disabledMessage();
+    }
+
+    @Override
+    public void setCustomRule(String s, double v) {
+        disabledMessage();
+    }
+
+    @Override
+    public void setCustomRule(String s, int i) {
+        disabledMessage();
+    }
+
+    @Override
+    public void setCustomRule(String s1, String s2) {
+        disabledMessage();
+    }
+
+    @Override
+    public void setSmartBanners(boolean b) {
+        disabledMessage();
+    }
+
+    @Override
+    public void trackInAppPurchase(double v, String s) {
+        disabledMessage();
+    }
+
 
     private void disabledMessage() {
         Gdx.app.debug(TAG, "GdxAppodeal not loaded or disabled!");

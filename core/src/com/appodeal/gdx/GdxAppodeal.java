@@ -3,8 +3,10 @@ package com.appodeal.gdx;
 import com.appodeal.gdx.callbacks.BannerCallback;
 import com.appodeal.gdx.callbacks.InterstitialCallback;
 import com.appodeal.gdx.callbacks.NonSkippableVideoCallback;
+import com.appodeal.gdx.callbacks.PermissionCallback;
 import com.appodeal.gdx.callbacks.RewardedVideoCallback;
 import com.appodeal.gdx.callbacks.SkippableVideoCallback;
+import com.appodeal.gdx.data.UserSettings;
 
 public class GdxAppodeal {
 
@@ -109,4 +111,47 @@ public class GdxAppodeal {
         getInstance().setLogging(logging);
     }
 
+    public static UserSettings getUserSettings(){
+        return getInstance().getUserSettings();
+    }
+
+    public static void disableWriteExternalStoragePermissionCheck(){
+        getInstance().disableWriteExternalStoragePermissionCheck();
+    }
+
+    public static void requestAndroidMPermissions(PermissionCallback permissionCallback) {
+        getInstance().requestAndroidMPermissions(permissionCallback);
+    }
+
+    public static void set728x90Banners(boolean b){
+        getInstance().set728x90Banners(b);
+    }
+
+    public static void setBannerAnimation(boolean b){
+        getInstance().setBannerAnimation(b);
+    }
+
+    public static void setCustomRule(String s, boolean b){
+        getInstance().setCustomRule(s, b);
+    }
+
+    public static void setCustomRule(String s, double v){
+        getInstance().setCustomRule(s, v);
+    }
+
+    public static void setCustomRule(String s, int i){
+        getInstance().setCustomRule(s, i);
+    }
+
+    public static void setCustomRule(String s1, String s2){
+        getInstance().setCustomRule(s1, s2);
+    }
+
+    public static void setSmartBanners(boolean b){
+        getInstance().setSmartBanners(b);
+    }
+
+    public static void trackInAppPurchase(double v, String s){
+        getInstance().trackInAppPurchase(v, s);
+    }
 }

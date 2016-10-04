@@ -5,6 +5,7 @@ import com.appodeal.gdx.callbacks.BannerCallback;
 import com.appodeal.gdx.callbacks.InterstitialCallback;
 import com.appodeal.gdx.callbacks.RewardedVideoCallback;
 import com.appodeal.gdx.callbacks.SkippableVideoCallback;
+import com.appodeal.gdx.data.UserSettings;
 import com.badlogic.gdx.Application;
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
@@ -50,6 +51,18 @@ public class AppodealGDXDemo extends ApplicationAdapter {
 
 		GdxAppodeal.confirm(GdxAppodeal.SKIPPABLE_VIDEO);
 
+		UserSettings userSettings = GdxAppodeal.getUserSettings();
+		userSettings.setAge(42);
+		userSettings.setGender(UserSettings.Gender.MALE);
+		userSettings.setAlcohol(UserSettings.Alcohol.POSITIVE);
+		userSettings.setSmoking(UserSettings.Smoking.POSITIVE);
+		userSettings.setRelation(UserSettings.Relation.SINGLE);
+		userSettings.setOccupation(UserSettings.Occupation.SCHOOL);
+		userSettings.setInterests("drinking, smoking");
+
+		GdxAppodeal.setCustomRule("test_rule", true);
+		GdxAppodeal.requestAndroidMPermissions(null);
+
 		GdxAppodeal.initialize(APP_ID, GdxAppodeal.BANNER | GdxAppodeal.INTERSTITIAL | GdxAppodeal.REWARDED_VIDEO | GdxAppodeal.SKIPPABLE_VIDEO);
 
 		skin = new Skin(Gdx.files.internal("uiskin.json"));
@@ -79,6 +92,9 @@ public class AppodealGDXDemo extends ApplicationAdapter {
 				switch (option) {
 					case Show:
 						GdxAppodeal.show(type, "level_end");
+						break;
+					case ShowWithPlacement:
+						GdxAppodeal.show(type, "unusual_placement");
 						break;
 					case IsLoaded:
 						showMessage(GdxAppodeal.isLoaded(type) ? "yes" : "no");

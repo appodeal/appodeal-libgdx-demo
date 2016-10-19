@@ -30,7 +30,7 @@ public interface AppodealInterface {
     void disableNetwork(String name, int type);
     String getVersion();
     void setTesting(boolean testing);
-    void setLogging(boolean logging);
+    void setLogLevel(GdxAppodeal.LogLevel level);
     UserSettings getUserSettings();
     void disableWriteExternalStoragePermissionCheck();
     void requestAndroidMPermissions(PermissionCallback permissionCallback);

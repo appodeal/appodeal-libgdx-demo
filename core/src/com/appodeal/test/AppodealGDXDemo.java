@@ -42,7 +42,7 @@ public class AppodealGDXDemo extends ApplicationAdapter {
 		}
 
 		GdxAppodeal.setTesting(false);
-		GdxAppodeal.setLogging(true);
+		GdxAppodeal.setLogLevel(GdxAppodeal.LogLevel.verbose);
 
 		GdxAppodeal.setBannerCallbacks(bannerCallbacks);
 		GdxAppodeal.setInterstitialCallbacks(interstitialCallbacks);
@@ -93,7 +93,7 @@ public class AppodealGDXDemo extends ApplicationAdapter {
 					case Show:
 						GdxAppodeal.show(type, "level_end");
 						break;
-					case ShowWithPlacement:
+					case ShowWIthPlacement:
 						GdxAppodeal.show(type, "unusual_placement");
 						break;
 					case IsLoaded:

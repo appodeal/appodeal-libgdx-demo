@@ -2,7 +2,7 @@ package com.appodeal.test;
 
 public enum TestOptions {
     Show,
-    ShowWithPlacement,
+    ShowWIthPlacement,
     IsLoaded,
     IsPreCache,
     Hide,

@@ -8,8 +8,10 @@ import com.appodeal.ads.InterstitialCallbacks;
 import com.appodeal.ads.NonSkippableVideoCallbacks;
 import com.appodeal.ads.RewardedVideoCallbacks;
 import com.appodeal.ads.SkippableVideoCallbacks;
+import com.appodeal.ads.utils.Log;
 import com.appodeal.ads.utils.PermissionsHelper;
 import com.appodeal.gdx.AppodealInterface;
+import com.appodeal.gdx.GdxAppodeal;
 import com.appodeal.gdx.callbacks.BannerCallback;
 import com.appodeal.gdx.callbacks.InterstitialCallback;
 import com.appodeal.gdx.callbacks.NonSkippableVideoCallback;
@@ -161,8 +163,9 @@ public class AndroidGdxAppodeal  implements AppodealInterface, BannerCallbacks, 
     }
 
     @Override
-    public void setLogging(boolean logging) {
-        Appodeal.setLogging(logging);
+    public void setLogLevel(GdxAppodeal.LogLevel level) {
+        Log.LogLevel appodealLevel = Log.LogLevel.valueOf(level.name());
+        Appodeal.setLogLevel(appodealLevel);
     }
 
 

@@ -15,8 +15,8 @@
     <uses-sdk android:minSdkVersion="9" android:targetSdkVersion="23" />
 
     <application
-        android:name="android.support.multidex.MultiDexApplication"
         android:allowBackup="true"
+        android:name="android.support.multidex.MultiDexApplication"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/GdxTheme" >
@@ -30,6 +30,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <meta-data android:name="com.appodeal.framework" android:value="gdx" />
         <receiver android:name="com.appodeal.ads.AppodealPackageAddedReceiver" android:exported="true" android:enabled="true">
             <intent-filter>
@@ -176,6 +177,7 @@
         <!--suppress AndroidDomInspection -->
         <activity android:name="com.tapjoy.TJContentActivity" android:configChanges="orientation|keyboardHidden|screenSize"
             android:theme="@android:style/Theme.Translucent.NoTitleBar" android:hardwareAccelerated="true" />
+
     </application>
 
 </manifest>

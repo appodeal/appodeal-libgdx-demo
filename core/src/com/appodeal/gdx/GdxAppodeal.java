@@ -12,6 +12,8 @@ public class GdxAppodeal {
 
     public static final String TAG = "GdxAppodeal";
 
+
+    public enum LogLevel{none, debug, verbose};
     public static final int NONE = 0;
     public static final int INTERSTITIAL = 1;
     public static final int SKIPPABLE_VIDEO = 2;
@@ -20,7 +22,6 @@ public class GdxAppodeal {
     public static final int BANNER = 4;
     public static final int BANNER_BOTTOM = 8;
     public static final int BANNER_TOP = 16;
-
     private static AppodealInterface instance;
 
     private static AppodealInterface getInstance() {
@@ -107,8 +108,8 @@ public class GdxAppodeal {
         getInstance().setTesting(testing);
     }
 
-    public static void setLogging(boolean logging) {
-        getInstance().setLogging(logging);
+    public static void setLogLevel(LogLevel level) {
+        getInstance().setLogLevel(level);
     }
 
     public static UserSettings getUserSettings(){

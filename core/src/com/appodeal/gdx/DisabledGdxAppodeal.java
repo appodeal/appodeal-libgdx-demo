@@ -119,7 +119,7 @@ public class DisabledGdxAppodeal implements AppodealInterface {
     }
 
     @Override
-    public void setLogging(boolean logging) {
+    public void setLogLevel(GdxAppodeal.LogLevel level) {
         disabledMessage();
     }
 

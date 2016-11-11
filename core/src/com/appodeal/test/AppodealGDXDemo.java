@@ -63,6 +63,11 @@ public class AppodealGDXDemo extends ApplicationAdapter {
 		GdxAppodeal.setCustomRule("test_rule", true);
 		GdxAppodeal.requestAndroidMPermissions(null);
 
+		GdxAppodeal.set728x90Banners(false);
+		GdxAppodeal.setBannerAnimation(false);
+		GdxAppodeal.setSmartBanners(false);
+
+		GdxAppodeal.setAutoCache(GdxAppodeal.INTERSTITIAL, false);
 		GdxAppodeal.initialize(APP_ID, GdxAppodeal.BANNER | GdxAppodeal.INTERSTITIAL | GdxAppodeal.REWARDED_VIDEO | GdxAppodeal.SKIPPABLE_VIDEO);
 
 		skin = new Skin(Gdx.files.internal("uiskin.json"));
@@ -91,10 +96,15 @@ public class AppodealGDXDemo extends ApplicationAdapter {
 				final int type = cboAdType.getSelected().getValue();
 				switch (option) {
 					case Show:
-						GdxAppodeal.show(type, "level_end");
+						if(GdxAppodeal.isLoaded(type)) {
+							GdxAppodeal.show(type, "level_end");
+						}
 						break;
 					case ShowWIthPlacement:
 						GdxAppodeal.show(type, "unusual_placement");
+						break;
+					case CacheInterstitial:
+						GdxAppodeal.cache(GdxAppodeal.INTERSTITIAL);
 						break;
 					case IsLoaded:
 						showMessage(GdxAppodeal.isLoaded(type) ? "yes" : "no");

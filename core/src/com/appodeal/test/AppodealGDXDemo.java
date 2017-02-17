@@ -10,13 +10,16 @@ import com.badlogic.gdx.Application;
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
+import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.ui.CheckBox;
 import com.badlogic.gdx.scenes.scene2d.ui.Dialog;
 import com.badlogic.gdx.scenes.scene2d.ui.SelectBox;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
+import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.viewport.ExtendViewport;
 
@@ -27,6 +30,17 @@ public class AppodealGDXDemo extends ApplicationAdapter {
 	private Skin skin;
 	private Stage stage;
 	private SelectBox<AdTypes> cboAdType;
+
+	private boolean enableLogging = false;
+	private boolean enableTesting = false;
+	private boolean confirm = false;
+	private boolean enableAutocache = false;
+	private boolean disableSmartBanners = false;
+	private boolean disableBannerAnimation = false;
+	private boolean disable728x90Banners = false;
+	private boolean enableTriggerOnLoadedOnPrecache = false;
+	private boolean disableLocationPermissionCheck = false;
+	private boolean disableWriteExternalStorageCheck = false;
 
 	public void create() {
 		Gdx.app.setLogLevel(Application.LOG_DEBUG);
@@ -41,15 +55,10 @@ public class AppodealGDXDemo extends ApplicationAdapter {
 			APP_ID = "";
 		}
 
-		GdxAppodeal.setTesting(false);
-		GdxAppodeal.setLogLevel(GdxAppodeal.LogLevel.verbose);
-
 		GdxAppodeal.setBannerCallbacks(bannerCallbacks);
 		GdxAppodeal.setInterstitialCallbacks(interstitialCallbacks);
 		GdxAppodeal.setSkippableVideoCallbacks(skippableVideoCallbacks);
 		GdxAppodeal.setRewardedVideoCallbacks(rewardedVideoCallbacks);
-
-		GdxAppodeal.confirm(GdxAppodeal.SKIPPABLE_VIDEO);
 
 		UserSettings userSettings = GdxAppodeal.getUserSettings();
 		userSettings.setAge(42);
@@ -63,13 +72,6 @@ public class AppodealGDXDemo extends ApplicationAdapter {
 		GdxAppodeal.setCustomRule("test_rule", true);
 		GdxAppodeal.requestAndroidMPermissions(null);
 
-		GdxAppodeal.set728x90Banners(false);
-		GdxAppodeal.setBannerAnimation(false);
-		GdxAppodeal.setSmartBanners(false);
-
-		GdxAppodeal.setAutoCache(GdxAppodeal.INTERSTITIAL, false);
-		GdxAppodeal.initialize(APP_ID, GdxAppodeal.BANNER | GdxAppodeal.INTERSTITIAL | GdxAppodeal.REWARDED_VIDEO | GdxAppodeal.SKIPPABLE_VIDEO);
-
 		skin = new Skin(Gdx.files.internal("uiskin.json"));
 		Table table = new Table();
 		stage.addActor(table);
@@ -77,34 +79,66 @@ public class AppodealGDXDemo extends ApplicationAdapter {
 
 		table.defaults().pad(2).fillX().expandX();
 
+
 		Table adTypeTable = new Table(skin);
 		adTypeTable.add("Ad Type: ");
 		cboAdType = new SelectBox<AdTypes>(skin);
 		cboAdType.setItems(AdTypes.values());
 		adTypeTable.add(cboAdType).fillX().expandX();
 
-		table.add(adTypeTable).row();
-		for (TestOptions option : TestOptions.values())
-			table.add(getOptionButton(option)).row();
+		table.add(adTypeTable);
+		TestOptions[] to = TestOptions.values();
+		TestCheckboxes[] tc = TestCheckboxes.values();
+		table.add(getCheckbox(tc[0])).left();
+		table.add(getCheckbox(tc[1])).left().row();
+
+		int finalRow = Math.max(to.length, tc.length-3);
+		for(int i = 0, j = 2; i < finalRow; i++, j++){
+			table.add(getOptionButton(i < to.length ? to[i] : null));
+			if(i == 0) {
+				table.add(getCheckbox(j < tc.length ? tc[j] : null)).left();
+				j++;
+				table.add(getCheckbox(j < tc.length ? tc[j] : null)).left();
+			}
+			else {
+				table.add(getCheckbox(j < tc.length ? tc[j] : null)).colspan(2).left();
+			}
+			table.row();
+		}
 	}
 
-	private TextButton getOptionButton(final TestOptions option) {
+	private Actor getOptionButton(final TestOptions option) {
+		if(option == null){
+			return new Actor(); //To fill empty cells in table
+		}
 		TextButton button = new TextButton(option.toString(), skin);
 		button.addListener(new ClickListener() {
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
 				final int type = cboAdType.getSelected().getValue();
 				switch (option) {
+					case Initialize:
+						if(enableLogging)
+							GdxAppodeal.setLogLevel(GdxAppodeal.LogLevel.verbose);
+						else
+							GdxAppodeal.setLogLevel(GdxAppodeal.LogLevel.none);
+						GdxAppodeal.setTesting(enableTesting);
+						if(confirm) GdxAppodeal.confirm(type);
+						GdxAppodeal.setSmartBanners(!disableSmartBanners);
+						GdxAppodeal.setBannerAnimation(!disableBannerAnimation);
+						GdxAppodeal.set728x90Banners(!disable728x90Banners);
+						GdxAppodeal.setOnLoadedTriggerBoth(type, enableTriggerOnLoadedOnPrecache);
+						if(disableLocationPermissionCheck) GdxAppodeal.disableLocationPermissionCheck();
+						if(disableWriteExternalStorageCheck) GdxAppodeal.disableWriteExternalStoragePermissionCheck();
+
+						GdxAppodeal.setAutoCache(type, enableAutocache);
+						GdxAppodeal.initialize(APP_ID, type);
+						break;
 					case Show:
-						if(GdxAppodeal.isLoaded(type)) {
-							GdxAppodeal.show(type, "level_end");
-						}
+						GdxAppodeal.show(type, "level_end");
 						break;
 					case ShowWIthPlacement:
 						GdxAppodeal.show(type, "unusual_placement");
-						break;
-					case CacheInterstitial:
-						GdxAppodeal.cache(GdxAppodeal.INTERSTITIAL);
 						break;
 					case IsLoaded:
 						showMessage(GdxAppodeal.isLoaded(type) ? "yes" : "no");
@@ -126,6 +160,53 @@ public class AppodealGDXDemo extends ApplicationAdapter {
 			}
 		});
 		return button;
+	}
+
+	private Actor getCheckbox(final TestCheckboxes checkbox){
+		if(checkbox == null){
+			return new Actor(); //To fill empty cells in table
+		}
+		CheckBox cb = new CheckBox(checkbox.toString(), skin);
+		cb.left();
+		cb.addListener(new ChangeListener() {
+			@Override
+			public void changed(ChangeEvent event, Actor actor) {
+				CheckBox currentCb = (CheckBox)actor;
+				switch (checkbox){
+					case Logging:
+						enableLogging = currentCb.isChecked();
+						break;
+					case Testing:
+						enableTesting = currentCb.isChecked();
+						break;
+					case Confirm:
+						confirm = currentCb.isChecked();
+						break;
+					case AutoCache:
+						enableAutocache = currentCb.isChecked();
+						break;
+					case DisableSmartBanners:
+						disableSmartBanners = currentCb.isChecked();
+						break;
+					case DisableBannerAnimation:
+						disableBannerAnimation = currentCb.isChecked();
+						break;
+					case Disable728x90Banners:
+						disable728x90Banners = currentCb.isChecked();
+						break;
+					case EnableTriggerOnLoadedOnPrecache:
+						enableTriggerOnLoadedOnPrecache = currentCb.isChecked();
+						break;
+					case DisableLocationPermissionCheck:
+						disableLocationPermissionCheck = currentCb.isChecked();
+						break;
+					case  DisableWriteExternalStorageCheck:
+						disableWriteExternalStorageCheck = currentCb.isChecked();
+						break;
+				}
+			}
+		});
+		return cb;
 	}
 
 	public void render() {

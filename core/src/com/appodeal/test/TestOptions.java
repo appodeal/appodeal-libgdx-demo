@@ -1,9 +1,9 @@
 package com.appodeal.test;
 
 public enum TestOptions {
+    Initialize,
     Show,
     ShowWIthPlacement,
-    CacheInterstitial,
     IsLoaded,
     IsPreCache,
     Hide,

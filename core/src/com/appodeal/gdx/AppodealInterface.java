@@ -3,8 +3,10 @@ package com.appodeal.gdx;
 import com.appodeal.gdx.callbacks.BannerCallback;
 import com.appodeal.gdx.callbacks.InterstitialCallback;
 import com.appodeal.gdx.callbacks.NonSkippableVideoCallback;
+import com.appodeal.gdx.callbacks.PermissionCallback;
 import com.appodeal.gdx.callbacks.RewardedVideoCallback;
 import com.appodeal.gdx.callbacks.SkippableVideoCallback;
+import com.appodeal.gdx.data.UserSettings;
 
 public interface AppodealInterface {
 
@@ -28,5 +30,16 @@ public interface AppodealInterface {
     void disableNetwork(String name, int type);
     String getVersion();
     void setTesting(boolean testing);
-    void setLogging(boolean logging);
+    void setLogLevel(GdxAppodeal.LogLevel level);
+    UserSettings getUserSettings();
+    void disableWriteExternalStoragePermissionCheck();
+    void requestAndroidMPermissions(PermissionCallback permissionCallback);
+    void set728x90Banners(boolean b);
+    void setBannerAnimation(boolean b);
+    void setCustomRule(String s, boolean b);
+    void setCustomRule(String s, double v);
+    void setCustomRule(String s, int i);
+    void setCustomRule(String s1, String s2);
+    void setSmartBanners(boolean b);
+    void trackInAppPurchase(double v, String s);
 }

@@ -5,7 +5,7 @@ buildscript {
         maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:2.1.0'
+        classpath 'com.android.tools.build:gradle:2.2.3'
         classpath 'com.mobidevelop.robovm:robovm-gradle-plugin:2.1.0'
     }
 }
@@ -29,6 +29,9 @@ allprojects {
         mavenCentral()
         maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
         maven { url "https://oss.sonatype.org/content/repositories/releases/" }
+        flatDir {
+            dirs 'libs/cheetah-mobile'
+        }
     }
 }
 
@@ -39,6 +42,7 @@ project(":android") {
 
     dependencies {
         compile project(":core")
+        compile(name:'cheetah-mobile-3.4.7', ext:'aar')
         compile "com.badlogicgames.gdx:gdx-backend-android:$gdxVersion"
         natives "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-armeabi"
         natives "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-armeabi-v7a"
@@ -53,8 +57,9 @@ project(":android") {
         natives "com.badlogicgames.gdx:gdx-box2d-platform:$gdxVersion:natives-x86_64"
 
         compile 'com.google.android.gms:play-services-ads:+'
-        compile'com.google.android.gms:play-services-location:+'
+        compile 'com.google.android.gms:play-services-location:+'
         compile 'com.android.support:support-v4:23+'
+        compile 'com.android.support:multidex:1.0.0'
         compile fileTree(dir: 'libs', include: '*.jar')
     }
 }

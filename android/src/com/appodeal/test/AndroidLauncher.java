@@ -4,7 +4,6 @@ import android.os.Bundle;
 
 import com.badlogic.gdx.backends.android.AndroidApplication;
 import com.badlogic.gdx.backends.android.AndroidApplicationConfiguration;
-import com.appodeal.test.AppodealGDXDemo;
 
 public class AndroidLauncher extends AndroidApplication {
 	@Override
@@ -12,5 +11,6 @@ public class AndroidLauncher extends AndroidApplication {
 		super.onCreate(savedInstanceState);
 		AndroidApplicationConfiguration config = new AndroidApplicationConfiguration();
 		initialize(new AppodealGDXDemo(), config);
+
 	}
 }

@@ -134,6 +134,9 @@ public class AppodealGDXDemo extends ApplicationAdapter {
 						GdxAppodeal.setAutoCache(type, enableAutocache);
 						GdxAppodeal.initialize(APP_ID, type);
 						break;
+					case Cache:
+						GdxAppodeal.cache(type);
+						break;
 					case Show:
 						GdxAppodeal.show(type, "level_end");
 						break;
@@ -142,6 +145,9 @@ public class AppodealGDXDemo extends ApplicationAdapter {
 						break;
 					case IsLoaded:
 						showMessage(GdxAppodeal.isLoaded(type) ? "yes" : "no");
+						break;
+					case IsPreCache:
+						showMessage(GdxAppodeal.isPreCache(type) ? "yes" : "no");
 						break;
 					case Hide:
 						GdxAppodeal.hide(type);

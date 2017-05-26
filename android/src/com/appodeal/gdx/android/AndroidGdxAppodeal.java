@@ -20,9 +20,13 @@ import com.appodeal.gdx.callbacks.RewardedVideoCallback;
 import com.appodeal.gdx.callbacks.SkippableVideoCallback;
 import com.appodeal.gdx.data.UserSettings;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.utils.reflect.ClassReflection;
+import com.badlogic.gdx.utils.reflect.ReflectionException;
+
+import java.util.concurrent.Callable;
 
 public class AndroidGdxAppodeal  implements AppodealInterface, BannerCallbacks, InterstitialCallbacks, SkippableVideoCallbacks, RewardedVideoCallbacks, NonSkippableVideoCallbacks, PermissionsHelper.AppodealPermissionCallbacks {
-    private final Activity activity;
+    private Activity activity;
 
     private InterstitialCallback interstitialListener;
     private BannerCallback bannerListener;
@@ -34,12 +38,54 @@ public class AndroidGdxAppodeal  implements AppodealInterface, BannerCallbacks, 
 
     private boolean isShow;
 
-    public AndroidGdxAppodeal(Activity activity) {
-        this.activity = activity;
+    public AndroidGdxAppodeal() {
+        updateActivityReference();
     }
 
+    private void updateActivityReference(){
+        try{
+            Class<?> gdxClazz = ClassReflection.forName("com.badlogic.gdx.Gdx");
+            Object gdxAppObject = ClassReflection.getField(gdxClazz, "app").get(null);
+            Class<?> activityClazz = ClassReflection.forName("android.app.Activity");
+
+            Object activity = null;
+            if (ClassReflection.isAssignableFrom(activityClazz, gdxAppObject.getClass())) {
+                activity = gdxAppObject;
+            } else {
+                Class<?> supportFragmentClass = findClass("android.support.v4.app.Fragment");
+                if (supportFragmentClass != null && ClassReflection.isAssignableFrom(supportFragmentClass, gdxAppObject.getClass())) {
+                    activity = ClassReflection.getMethod(supportFragmentClass, "getActivity").invoke(gdxAppObject);
+                } else {
+                    Class<?> fragmentClass = findClass("android.app.Fragment");
+                    if (fragmentClass != null && ClassReflection.isAssignableFrom(fragmentClass, gdxAppObject.getClass())) {
+                        activity = ClassReflection.getMethod(fragmentClass, "getActivity").invoke(gdxAppObject);
+                    }
+                }
+            }
+            if (activity == null) {
+                throw new RuntimeException("Can't find your gdx activity to instantiate libGDX Appodeal. " + "Looks like you have implemented AndroidApplication without using "
+                        + "Activity or Fragment classes or Activity is not available at the moment.");
+            }
+            this.activity = (Activity) activity;
+            Appodeal.onResume(this.activity, Appodeal.BANNER);
+
+        } catch (ReflectionException e) {
+            throw new RuntimeException("No libGDX environment. \n");
+        }
+    }
+
+    /**
+     * @return null if class is not available in runtime
+     */
+    private static Class<?> findClass(String name) {
+        try {
+            return ClassReflection.forName(name);
+        } catch (Exception e) {
+            return null;
+        }
+    }
     @Override
-    public void initialize(String appId, final int type) {
+    public void initialize(String appId, int type) {
         Appodeal.initialize(activity, appId, type);
     }
 
@@ -345,5 +391,20 @@ public class AndroidGdxAppodeal  implements AppodealInterface, BannerCallbacks, 
     @Override
     public void trackInAppPurchase(double v, String s) {
         Appodeal.trackInAppPurchase(activity, v, s);
+    }
+
+    @Override
+    public void onResume() {
+        updateActivityReference();
+        Appodeal.onResume(this.activity, Appodeal.BANNER);
+    }
+
+    @Override
+    /**
+     * Just an alias for onResume method.
+     * resume() from libGDX isn't called in case if main activity was destroyed
+     */
+    public void onCreate() {
+        onResume();
     }
 }

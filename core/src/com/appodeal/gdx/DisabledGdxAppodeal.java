@@ -184,4 +184,13 @@ public class DisabledGdxAppodeal implements AppodealInterface {
         Gdx.app.debug(TAG, "GdxAppodeal not loaded or disabled!");
     }
 
+    @Override
+    public void onCreate() {
+        Gdx.app.debug(TAG, "GdxAppodeal not loaded or disabled!");
+    }
+
+    @Override
+    public void onResume() {
+        Gdx.app.debug(TAG, "GdxAppodeal not loaded or disabled!");
+    }
 }

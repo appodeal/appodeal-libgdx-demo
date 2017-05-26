@@ -155,4 +155,12 @@ public class GdxAppodeal {
     public static void trackInAppPurchase(double v, String s){
         getInstance().trackInAppPurchase(v, s);
     }
+
+    public static void onResume(){
+        getInstance().onResume();
+    }
+
+    public static void onCreate() {
+        getInstance().onCreate();
+    }
 }

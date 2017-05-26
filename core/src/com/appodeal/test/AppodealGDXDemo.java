@@ -55,6 +55,7 @@ public class AppodealGDXDemo extends ApplicationAdapter {
 			APP_ID = "";
 		}
 
+		GdxAppodeal.onCreate();
 		GdxAppodeal.setBannerCallbacks(bannerCallbacks);
 		GdxAppodeal.setInterstitialCallbacks(interstitialCallbacks);
 		GdxAppodeal.setSkippableVideoCallbacks(skippableVideoCallbacks);
@@ -224,6 +225,12 @@ public class AppodealGDXDemo extends ApplicationAdapter {
 
 	public void resize(int width, int height) {
 		stage.getViewport().update(width, height, true);
+	}
+
+	@Override
+	public void resume() {
+		super.resume();
+		GdxAppodeal.onResume();
 	}
 
 	BannerCallback bannerCallbacks = new BannerCallback() {

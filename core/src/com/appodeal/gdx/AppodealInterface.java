@@ -42,4 +42,6 @@ public interface AppodealInterface {
     void setCustomRule(String s1, String s2);
     void setSmartBanners(boolean b);
     void trackInAppPurchase(double v, String s);
+    void onResume();
+    void onCreate();
 }

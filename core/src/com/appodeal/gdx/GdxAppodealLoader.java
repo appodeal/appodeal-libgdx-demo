@@ -51,27 +51,7 @@ public class GdxAppodealLoader {
         try {
             Class<?> activityClazz = ClassReflection.forName("android.app.Activity");
             final Class<?> appodealClazz = ClassReflection.forName(CLASS_NAME_APPODEAL_ANDROID);
-            Object activity = null;
-            if (ClassReflection.isAssignableFrom(activityClazz, gdxAppObject.getClass())) {
-                activity = gdxAppObject;
-            } else {
-                Class<?> supportFragmentClass = findClass("android.support.v4.app.Fragment");
-                if (supportFragmentClass != null && ClassReflection.isAssignableFrom(supportFragmentClass, gdxAppObject.getClass())) {
-                    activity = ClassReflection.getMethod(supportFragmentClass, "getActivity").invoke(gdxAppObject);
-                } else {
-                    Class<?> fragmentClass = findClass("android.app.Fragment");
-                    if (fragmentClass != null && ClassReflection.isAssignableFrom(fragmentClass, gdxAppObject.getClass())) {
-                        activity = ClassReflection.getMethod(fragmentClass, "getActivity").invoke(gdxAppObject);
-                    }
-                }
-            }
-
-            if (activity == null) {
-                throw new RuntimeException("Can't find your gdx activity to instantiate libGDX Appodeal. " + "Looks like you have implemented AndroidApplication without using "
-                        + "Activity or Fragment classes or Activity is not available at the moment.");
-            }
-
-            Object appodeal = ClassReflection.getConstructor(appodealClazz, activityClazz).newInstance(activity);
+            Object appodeal = ClassReflection.getConstructor(appodealClazz).newInstance();
 
             Gdx.app.debug(GdxAppodeal.TAG, "GdxAppodeal for Android loaded successfully.");
             return (AppodealInterface) appodeal;
@@ -79,17 +59,6 @@ public class GdxAppodealLoader {
             Gdx.app.debug(GdxAppodeal.TAG, "Error creating GdxAppodeal for Android.");
             e.printStackTrace();
             return new DisabledGdxAppodeal();
-        }
-    }
-
-    /**
-     * @return null if class is not available in runtime
-     */
-    private static Class<?> findClass(String name) {
-        try {
-            return ClassReflection.forName(name);
-        } catch (Exception e) {
-            return null;
         }
     }
 }

@@ -3,7 +3,6 @@ package com.appodeal.test;
 enum TestCheckboxes {
     Logging,
     Testing,
-    Confirm,
     AutoCache,
     DisableSmartBanners,
     DisableBannerAnimation,

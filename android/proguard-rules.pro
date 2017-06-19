@@ -57,11 +57,11 @@
 # Mopub
 -keep public class com.mopub.**
 -keepclassmembers class com.mopub.** { public *; }
+-dontwarn com.mopub.**
 -keep class * extends com.mopub.mobileads.CustomEventBanner {}
 -keep class * extends com.mopub.mobileads.CustomEventInterstitial {}
 -keep class * extends com.mopub.nativeads.CustomEventNative {}
 -keep class * extends com.mopub.mobileads.CustomEventRewardedVideo {}
--dontwarn com.mopub.nativeads.**
 -dontwarn com.mopub.volley.toolbox.**
 
 # Applovin
@@ -77,9 +77,9 @@
 -dontwarn com.chartboost.**
 
 # Unity Ads
--keepattributes JavascriptInterface
 -keepattributes SourceFile,LineNumberTable
 -keep class com.unity3d.** { *; }
+-dontwarn com.unity3d.**
 
 # Yandex
 -keep class com.yandex.metrica.** { *; }
@@ -114,13 +114,15 @@
 
 # Adcolony
 -keep class com.jirbo.adcolony.** { *;}
+-keep class com.adcolony.** { *;}
 -keep class com.immersion.** { *;}
 -dontnote com.immersion.**
 -dontwarn android.webkit.**
 -dontwarn com.jirbo.adcolony.**
+-dontwarn com.adcolony.**
 
 # Vungle
--keep class com.vungle.** { public *; }
+-keep class com.vungle.** { *;}
 -keep class javax.inject.*
 -keepattributes *Annotation*, Signature
 -keep class dagger.*
@@ -129,23 +131,72 @@
 # MyTarget
 -keep class com.my.target.** { *; }
 -dontwarn com.my.target.**
--keep class ru.mail.android.mytarget.** { *; }
--dontwarn ru.mail.android.mytarget.**
 
-#Cheetah Mobile
--keep class com.cmcm.** { *; }
--dontwarn com.cmcm.**
+# Admob
+-keep class com.google.android.gms.ads.** { *; }
 
 # Tapjoy
 -keep class com.tapjoy.** { *; }
 -dontwarn com.tapjoy.**
 
-# Revmob
--keep class com.revmob.** { *; }
--dontwarn com.revmob.**
+# IronSource
+-keepclassmembers class com.supersonicads.sdk.controller.SupersonicWebView$JSInterface { public *; }
+-keepclassmembers class * implements android.os.Parcelable { public static final android.os.Parcelable$Creator *; }
+-keep class com.supersonic.** { *; }
+-keep class com.supersonicads.** { *; }
+-dontwarn com.supersonic.**
+-dontwarn com.supersonicads.**
 
-# Admob
--keep class com.google.android.gms.ads.** { *; }
+# AdColonyV3
+-keepclassmembers class * { @android.webkit.JavascriptInterface <methods>; }
+-dontwarn com.adcolony.**
+-dontwarn android.app.Activity
+
+# Inmobi
+-keep class com.inmobi.** { *; }
+-dontwarn com.inmobi.**
+-dontwarn com.squareup.picasso.**
+-keep class com.squareup.picasso.** {*;}
+-dontwarn com.squareup.picasso.**
+-dontwarn com.squareup.okhttp.**
+-keep class com.moat.** {*;}
+-dontwarn com.moat.**
+
+# Ogury
+-dontnote io.presage.**
+-dontwarn shared_presage.**
+-dontwarn org.codehaus.**
+-keepattributes Signature
+-keep class shared_presage.** { *; }
+-keep class io.presage.** { *; }
+-keepclassmembers class io.presage.** { *; }
+-keepattributes *Annotation*
+-keepattributes JavascriptInterface
+-keepclassmembers class * {
+  @android.webkit.JavascriptInterface <methods>;
+}
+-dontnote okhttp3.**
+-dontnote okio.**
+-dontwarn okhttp3.**
+-dontwarn okio.**
+
+-dontnote sun.misc.Unsafe
+-dontnote android.net.http.*
+
+-dontnote org.apache.commons.codec.**
+-dontnote org.apache.http.**
+
+-dontwarn org.apache.commons.collections.BeanMap
+-dontwarn java.beans.**
+-dontnote com.google.gson.**
+-keepclassmembers class * implements java.io.Serializable {
+  static final long serialVersionUID;
+  private static final java.io.ObjectStreamField[] serialPersistentFields;
+  private void writeObject(java.io.ObjectOutputStream);
+  private void readObject(java.io.ObjectInputStream);
+  java.lang.Object writeReplace();
+  java.lang.Object readResolve();
+}
 
 # Google
 -keep class com.google.android.gms.common.GooglePlayServicesUtil {*;}
@@ -159,7 +210,7 @@
 
 # Google Play Services library
 -keep class * extends java.util.ListResourceBundle {
-    protected Object[][] getContents();
+  protected Object[][] getContents();
 }
 -keep public class com.google.android.gms.common.internal.safeparcel.SafeParcelable {
   public static final *** NULL;

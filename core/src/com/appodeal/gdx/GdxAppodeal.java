@@ -16,7 +16,6 @@ public class GdxAppodeal {
     public enum LogLevel{none, debug, verbose};
     public static final int NONE = 0;
     public static final int INTERSTITIAL = 1;
-    public static final int SKIPPABLE_VIDEO = 2;
     public static final int REWARDED_VIDEO = 128;
     public static final int NON_SKIPPABLE_VIDEO = 128;
     public static final int BANNER = 4;
@@ -41,10 +40,6 @@ public class GdxAppodeal {
         getInstance().setBannerCallbacks(listener);
     }
 
-    public static void setSkippableVideoCallbacks(SkippableVideoCallback listener) {
-        getInstance().setSkippableVideoCallbacks(listener);
-    }
-
     public static void setNonSkippableVideoCallbacks(NonSkippableVideoCallback listener) {
         getInstance().setNonSkippableVideoCallbacks(listener);
     }
@@ -65,10 +60,6 @@ public class GdxAppodeal {
         getInstance().setAutoCache(type, autoCache);
     }
 
-    public static void setOnLoadedTriggerBoth(int type, boolean onLoadedTriggerBoth) {
-        getInstance().setOnLoadedTriggerBoth(type, onLoadedTriggerBoth);
-    }
-
     public static boolean isLoaded(int type) {
         return getInstance().isLoaded(type);
     }
@@ -83,9 +74,6 @@ public class GdxAppodeal {
 
     public static  void hide(int type) {
         getInstance().hide(type);
-    }
-    public static void confirm(int type) {
-        getInstance().confirm(type);
     }
 
     public static void disableLocationPermissionCheck() {
@@ -162,5 +150,9 @@ public class GdxAppodeal {
 
     public static void onCreate() {
         getInstance().onCreate();
+    }
+
+    public static void setTriggerOnLoadedOnPrecache(int adType, boolean flag){
+        getInstance().setTriggerOnLoadedOnPrecache(adType, flag);
     }
 }

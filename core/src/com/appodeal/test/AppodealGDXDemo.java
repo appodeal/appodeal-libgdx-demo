@@ -33,7 +33,6 @@ public class AppodealGDXDemo extends ApplicationAdapter {
 
 	private boolean enableLogging = false;
 	private boolean enableTesting = false;
-	private boolean confirm = false;
 	private boolean enableAutocache = false;
 	private boolean disableSmartBanners = false;
 	private boolean disableBannerAnimation = false;
@@ -58,17 +57,11 @@ public class AppodealGDXDemo extends ApplicationAdapter {
 		GdxAppodeal.onCreate();
 		GdxAppodeal.setBannerCallbacks(bannerCallbacks);
 		GdxAppodeal.setInterstitialCallbacks(interstitialCallbacks);
-		GdxAppodeal.setSkippableVideoCallbacks(skippableVideoCallbacks);
 		GdxAppodeal.setRewardedVideoCallbacks(rewardedVideoCallbacks);
 
 		UserSettings userSettings = GdxAppodeal.getUserSettings();
 		userSettings.setAge(42);
 		userSettings.setGender(UserSettings.Gender.MALE);
-		userSettings.setAlcohol(UserSettings.Alcohol.POSITIVE);
-		userSettings.setSmoking(UserSettings.Smoking.POSITIVE);
-		userSettings.setRelation(UserSettings.Relation.SINGLE);
-		userSettings.setOccupation(UserSettings.Occupation.SCHOOL);
-		userSettings.setInterests("drinking, smoking");
 
 		GdxAppodeal.setCustomRule("test_rule", true);
 		GdxAppodeal.requestAndroidMPermissions(null);
@@ -124,11 +117,10 @@ public class AppodealGDXDemo extends ApplicationAdapter {
 						else
 							GdxAppodeal.setLogLevel(GdxAppodeal.LogLevel.none);
 						GdxAppodeal.setTesting(enableTesting);
-						if(confirm) GdxAppodeal.confirm(type);
 						GdxAppodeal.setSmartBanners(!disableSmartBanners);
 						GdxAppodeal.setBannerAnimation(!disableBannerAnimation);
 						GdxAppodeal.set728x90Banners(!disable728x90Banners);
-						GdxAppodeal.setOnLoadedTriggerBoth(type, enableTriggerOnLoadedOnPrecache);
+						GdxAppodeal.setTriggerOnLoadedOnPrecache(type, enableTriggerOnLoadedOnPrecache);
 						if(disableLocationPermissionCheck) GdxAppodeal.disableLocationPermissionCheck();
 						if(disableWriteExternalStorageCheck) GdxAppodeal.disableWriteExternalStoragePermissionCheck();
 
@@ -185,9 +177,6 @@ public class AppodealGDXDemo extends ApplicationAdapter {
 						break;
 					case Testing:
 						enableTesting = currentCb.isChecked();
-						break;
-					case Confirm:
-						confirm = currentCb.isChecked();
 						break;
 					case AutoCache:
 						enableAutocache = currentCb.isChecked();

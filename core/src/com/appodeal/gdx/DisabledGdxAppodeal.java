@@ -29,11 +29,6 @@ public class DisabledGdxAppodeal implements AppodealInterface {
     }
 
     @Override
-    public void setSkippableVideoCallbacks(SkippableVideoCallback listener) {
-        disabledMessage();
-    }
-
-    @Override
     public void setNonSkippableVideoCallbacks(NonSkippableVideoCallback listener) {
         disabledMessage();
     }
@@ -61,7 +56,7 @@ public class DisabledGdxAppodeal implements AppodealInterface {
     }
 
     @Override
-    public void setOnLoadedTriggerBoth(int type, boolean onLoadedTriggerBoth) {
+    public void setTriggerOnLoadedOnPrecache(int type, boolean onLoadedTriggerBoth) {
         disabledMessage();
     }
 
@@ -84,11 +79,6 @@ public class DisabledGdxAppodeal implements AppodealInterface {
 
     @Override
     public void hide(int type) {
-        disabledMessage();
-    }
-
-    @Override
-    public void confirm(int type) {
         disabledMessage();
     }
 

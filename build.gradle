@@ -5,7 +5,7 @@ buildscript {
         maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:2.3.2'
+        classpath 'com.android.tools.build:gradle:2.3.3'
     }
 }
 
@@ -30,7 +30,7 @@ allprojects {
         maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
         maven { url "https://oss.sonatype.org/content/repositories/releases/" }
         flatDir {
-            dirs 'libs/cheetah-mobile'
+            dirs 'libs/aar_repository'
         }
     }
 }
@@ -58,7 +58,9 @@ project(":android") {
         compile "com.google.android.gms:play-services-ads:10.2.0"
         compile "com.google.android.gms:play-services-location:10.2.0"
         compile 'com.android.support:multidex:1.0.1'
-        compile(name:'cheetah-mobile-3.4.7', ext:'aar')
+        compile(name:'adcolony-sdk-3.1.2', ext:'aar')
+        compile(name:'facebook-audience-network-4.22.0', ext:'aar')
+        compile 'com.squareup.picasso:picasso:2.5.2' //for Inmobi
         compile fileTree(dir: 'libs', include: '*.jar')
     }
 }

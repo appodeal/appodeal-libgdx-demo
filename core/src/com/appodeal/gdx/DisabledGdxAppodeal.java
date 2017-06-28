@@ -6,6 +6,7 @@ import com.appodeal.gdx.callbacks.NonSkippableVideoCallback;
 import com.appodeal.gdx.callbacks.PermissionCallback;
 import com.appodeal.gdx.callbacks.RewardedVideoCallback;
 import com.appodeal.gdx.callbacks.SkippableVideoCallback;
+import com.appodeal.gdx.data.RewardParameters;
 import com.appodeal.gdx.data.UserSettings;
 import com.badlogic.gdx.Gdx;
 
@@ -182,5 +183,39 @@ public class DisabledGdxAppodeal implements AppodealInterface {
     @Override
     public void onResume() {
         Gdx.app.debug(TAG, "GdxAppodeal not loaded or disabled!");
+    }
+
+    @Override
+    public boolean canShow(int adType) {
+        disabledMessage();
+        return false;
+    }
+
+    @Override
+    public boolean canShow(int adType, String placement) {
+        disabledMessage();
+        return false;
+    }
+
+    @Override
+    public RewardParameters getRewardParameters() {
+        disabledMessage();
+        return null;
+    }
+
+    @Override
+    public RewardParameters getRewardParameters(String placement) {
+        disabledMessage();
+        return null;
+    }
+
+    @Override
+    public void startTestActivity() {
+        disabledMessage();
+    }
+
+    @Override
+    public void muteVideosIfCallsMuted(boolean flag) {
+        disabledMessage();
     }
 }

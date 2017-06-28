@@ -1,6 +1,7 @@
 package com.appodeal.gdx.android;
 
 import android.app.Activity;
+import android.util.Pair;
 
 import com.appodeal.ads.Appodeal;
 import com.appodeal.ads.BannerCallbacks;
@@ -17,6 +18,7 @@ import com.appodeal.gdx.callbacks.NonSkippableVideoCallback;
 import com.appodeal.gdx.callbacks.PermissionCallback;
 import com.appodeal.gdx.callbacks.RewardedVideoCallback;
 import com.appodeal.gdx.callbacks.SkippableVideoCallback;
+import com.appodeal.gdx.data.RewardParameters;
 import com.appodeal.gdx.data.UserSettings;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.utils.reflect.ClassReflection;
@@ -84,6 +86,7 @@ public class AndroidGdxAppodeal  implements AppodealInterface, BannerCallbacks, 
     }
     @Override
     public void initialize(String appId, int type) {
+        Appodeal.setFramework("gdx", "2.0.2");
         Appodeal.initialize(activity, appId, type);
     }
 
@@ -370,5 +373,43 @@ public class AndroidGdxAppodeal  implements AppodealInterface, BannerCallbacks, 
      */
     public void onCreate() {
         onResume();
+    }
+
+    @Override
+    public boolean canShow(int adType) {
+        return Appodeal.canShow(adType);
+    }
+
+    @Override
+    public boolean canShow(int adType, String placement) {
+        return Appodeal.canShow(adType, placement);
+    }
+
+    @Override
+    public RewardParameters getRewardParameters() {
+        Pair<Integer, String> p = Appodeal.getRewardParameters();
+        RewardParameters ret = new RewardParameters();
+        ret.amount = p.first;
+        ret.currencyName = p.second;
+        return ret;
+    }
+
+    @Override
+    public RewardParameters getRewardParameters(String placement) {
+        Pair<Integer, String> p = Appodeal.getRewardParameters(placement);
+        RewardParameters ret = new RewardParameters();
+        ret.amount = p.first;
+        ret.currencyName = p.second;
+        return ret;
+    }
+
+    @Override
+    public void startTestActivity() {
+        Appodeal.startTestActivity(this.activity);
+    }
+
+    @Override
+    public void muteVideosIfCallsMuted(boolean flag) {
+        Appodeal.muteVideosIfCallsMuted(flag);
     }
 }

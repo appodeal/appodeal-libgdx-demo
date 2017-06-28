@@ -5,6 +5,7 @@ import com.appodeal.gdx.callbacks.BannerCallback;
 import com.appodeal.gdx.callbacks.InterstitialCallback;
 import com.appodeal.gdx.callbacks.RewardedVideoCallback;
 import com.appodeal.gdx.callbacks.SkippableVideoCallback;
+import com.appodeal.gdx.data.RewardParameters;
 import com.appodeal.gdx.data.UserSettings;
 import com.badlogic.gdx.Application;
 import com.badlogic.gdx.ApplicationAdapter;
@@ -40,6 +41,7 @@ public class AppodealGDXDemo extends ApplicationAdapter {
 	private boolean enableTriggerOnLoadedOnPrecache = false;
 	private boolean disableLocationPermissionCheck = false;
 	private boolean disableWriteExternalStorageCheck = false;
+	private boolean muteVideoIfCalledMuted = false;
 
 	public void create() {
 		Gdx.app.setLogLevel(Application.LOG_DEBUG);
@@ -121,6 +123,7 @@ public class AppodealGDXDemo extends ApplicationAdapter {
 						GdxAppodeal.setBannerAnimation(!disableBannerAnimation);
 						GdxAppodeal.set728x90Banners(!disable728x90Banners);
 						GdxAppodeal.setTriggerOnLoadedOnPrecache(type, enableTriggerOnLoadedOnPrecache);
+						GdxAppodeal.muteVideosIfCallsMuted(muteVideoIfCalledMuted);
 						if(disableLocationPermissionCheck) GdxAppodeal.disableLocationPermissionCheck();
 						if(disableWriteExternalStorageCheck) GdxAppodeal.disableWriteExternalStoragePermissionCheck();
 
@@ -139,14 +142,14 @@ public class AppodealGDXDemo extends ApplicationAdapter {
 					case IsLoaded:
 						showMessage(GdxAppodeal.isLoaded(type) ? "yes" : "no");
 						break;
+					case CanShow:
+						showMessage(GdxAppodeal.canShow(type)? "yes" : "no");
+						break;
 					case IsPreCache:
 						showMessage(GdxAppodeal.isPreCache(type) ? "yes" : "no");
 						break;
 					case Hide:
 						GdxAppodeal.hide(type);
-						break;
-					case GetVersion:
-						showMessage(GdxAppodeal.getVersion());
 						break;
 					case Exit:
 						Gdx.app.exit();
@@ -198,6 +201,9 @@ public class AppodealGDXDemo extends ApplicationAdapter {
 						break;
 					case  DisableWriteExternalStorageCheck:
 						disableWriteExternalStorageCheck = currentCb.isChecked();
+						break;
+					case MuteVideosIfCalledMuted:
+						muteVideoIfCalledMuted = currentCb.isChecked();
 						break;
 				}
 			}
@@ -314,6 +320,9 @@ public class AppodealGDXDemo extends ApplicationAdapter {
 
 		@Override
 		public void onRewardedVideoFinished(int amount, String name) {
+			RewardParameters rp = GdxAppodeal.getRewardParameters();
+			//rp.amount == amount;
+			//rp.currencyName == name;
 		}
 
 		@Override

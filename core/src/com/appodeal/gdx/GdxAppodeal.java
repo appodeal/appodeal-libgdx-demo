@@ -6,6 +6,7 @@ import com.appodeal.gdx.callbacks.NonSkippableVideoCallback;
 import com.appodeal.gdx.callbacks.PermissionCallback;
 import com.appodeal.gdx.callbacks.RewardedVideoCallback;
 import com.appodeal.gdx.callbacks.SkippableVideoCallback;
+import com.appodeal.gdx.data.RewardParameters;
 import com.appodeal.gdx.data.UserSettings;
 
 public class GdxAppodeal {
@@ -154,5 +155,25 @@ public class GdxAppodeal {
 
     public static void setTriggerOnLoadedOnPrecache(int adType, boolean flag){
         getInstance().setTriggerOnLoadedOnPrecache(adType, flag);
+    }
+
+    public static  boolean canShow(int adType){
+        return getInstance().canShow(adType);
+    }
+
+    public static  boolean canShow(int adType, String placement){
+        return getInstance().canShow(adType, placement);
+    }
+    public static RewardParameters getRewardParameters(){
+        return getInstance().getRewardParameters();
+    }
+    public static RewardParameters getRewardParameters(String placement){
+        return  getInstance().getRewardParameters();
+    }
+    public static void startTestActivity(){
+        getInstance().startTestActivity();
+    }
+    public static void muteVideosIfCallsMuted(boolean flag){
+        getInstance().muteVideosIfCallsMuted(flag);
     }
 }

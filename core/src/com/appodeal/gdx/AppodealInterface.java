@@ -6,6 +6,7 @@ import com.appodeal.gdx.callbacks.NonSkippableVideoCallback;
 import com.appodeal.gdx.callbacks.PermissionCallback;
 import com.appodeal.gdx.callbacks.RewardedVideoCallback;
 import com.appodeal.gdx.callbacks.SkippableVideoCallback;
+import com.appodeal.gdx.data.RewardParameters;
 import com.appodeal.gdx.data.UserSettings;
 
 public interface AppodealInterface {
@@ -42,4 +43,10 @@ public interface AppodealInterface {
     void trackInAppPurchase(double v, String s);
     void onResume();
     void onCreate();
+    boolean canShow(int adType);
+    boolean canShow(int adType, String placement);
+    RewardParameters getRewardParameters();
+    RewardParameters getRewardParameters(String placement);
+    void startTestActivity();
+    void muteVideosIfCallsMuted(boolean flag);
 }

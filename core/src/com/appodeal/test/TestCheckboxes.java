@@ -9,5 +9,6 @@ enum TestCheckboxes {
     Disable728x90Banners,
     EnableTriggerOnLoadedOnPrecache,
     DisableLocationPermissionCheck,
-    DisableWriteExternalStorageCheck
+    DisableWriteExternalStorageCheck,
+    MuteVideosIfCalledMuted
 }

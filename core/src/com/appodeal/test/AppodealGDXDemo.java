@@ -4,8 +4,6 @@ import com.appodeal.gdx.GdxAppodeal;
 import com.appodeal.gdx.callbacks.BannerCallback;
 import com.appodeal.gdx.callbacks.InterstitialCallback;
 import com.appodeal.gdx.callbacks.RewardedVideoCallback;
-import com.appodeal.gdx.callbacks.SkippableVideoCallback;
-import com.appodeal.gdx.data.RewardParameters;
 import com.appodeal.gdx.data.UserSettings;
 import com.badlogic.gdx.Application;
 import com.badlogic.gdx.ApplicationAdapter;
@@ -231,103 +229,76 @@ public class AppodealGDXDemo extends ApplicationAdapter {
 	BannerCallback bannerCallbacks = new BannerCallback() {
 		@Override
 		public void onBannerLoaded() {
-
+			Gdx.app.log("AppodealGDX", "onBannerLoaded");
 		}
 
 		@Override
 		public void onBannerFailedToLoad() {
-
+			Gdx.app.log("AppodealGDX", "onBannerFailedToLoad");
 		}
 
 		@Override
 		public void onBannerShown() {
-
+			Gdx.app.log("AppodealGDX", "onBannerShown");
 		}
 
 		@Override
 		public void onBannerClicked() {
-
+			Gdx.app.log("AppodealGDX", "onBannerClicked");
 		}
 	};
 
 	InterstitialCallback interstitialCallbacks = new InterstitialCallback() {
 		@Override
 		public void onInterstitialLoaded(boolean isPrecache) {
+			Gdx.app.log("AppodealGDX", "onInterstitialLoaded");
 		}
 
 		@Override
 		public void onInterstitialFailedToLoad() {
-
+			Gdx.app.log("AppodealGDX", "onInterstitialFailedToLoad");
 		}
 
 		@Override
 		public void onInterstitialShown() {
-
+			Gdx.app.log("AppodealGDX", "onInterstitialShown");
 		}
 
 		@Override
 		public void onInterstitialClicked() {
-
+			Gdx.app.log("AppodealGDX", "onInterstitialClicked");
 		}
 
 		@Override
 		public void onInterstitialClosed() {
-
-		}
-	};
-
-	SkippableVideoCallback skippableVideoCallbacks = new SkippableVideoCallback() {
-		@Override
-		public void onSkippableVideoLoaded() {
-		}
-
-		@Override
-		public void onSkippableVideoFailedToLoad() {
-
-		}
-
-		@Override
-		public void onSkippableVideoShown() {
-
-		}
-
-		@Override
-		public void onSkippableVideoFinished() {
-
-		}
-
-		@Override
-		public void onSkippableVideoClosed() {
-
+			Gdx.app.log("AppodealGDX", "onInterstitialClosed");
 		}
 	};
 
 	RewardedVideoCallback rewardedVideoCallbacks = new RewardedVideoCallback() {
 		@Override
 		public void onRewardedVideoLoaded() {
-
+			Gdx.app.log("AppodealGDX", "onRewardedVideoLoaded");
 		}
 
 		@Override
 		public void onRewardedVideoFailedToLoad() {
-
+			Gdx.app.log("AppodealGDX", "onRewardedVideoFailedToLoad");
 		}
 
 		@Override
 		public void onRewardedVideoShown() {
-
+			Gdx.app.log("AppodealGDX", "onRewardedVideoShown");
 		}
 
 		@Override
 		public void onRewardedVideoFinished(int amount, String name) {
-			RewardParameters rp = GdxAppodeal.getRewardParameters();
-			//rp.amount == amount;
-			//rp.currencyName == name;
+			Gdx.app.log("AppodealGDX", "onRewardedVideoFinished");
 		}
 
 		@Override
 		public void onRewardedVideoClosed() {
-
+			Gdx.app.log("AppodealGDX", "onRewardedVideoClosed");
 		}
 	};
 }

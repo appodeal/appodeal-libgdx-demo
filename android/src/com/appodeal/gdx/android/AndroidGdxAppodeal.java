@@ -17,14 +17,11 @@ import com.appodeal.gdx.callbacks.InterstitialCallback;
 import com.appodeal.gdx.callbacks.NonSkippableVideoCallback;
 import com.appodeal.gdx.callbacks.PermissionCallback;
 import com.appodeal.gdx.callbacks.RewardedVideoCallback;
-import com.appodeal.gdx.callbacks.SkippableVideoCallback;
 import com.appodeal.gdx.data.RewardParameters;
 import com.appodeal.gdx.data.UserSettings;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.utils.reflect.ClassReflection;
 import com.badlogic.gdx.utils.reflect.ReflectionException;
-
-import java.util.concurrent.Callable;
 
 public class AndroidGdxAppodeal  implements AppodealInterface, BannerCallbacks, InterstitialCallbacks, RewardedVideoCallbacks, NonSkippableVideoCallbacks, PermissionsHelper.AppodealPermissionCallbacks {
     private Activity activity;
@@ -86,7 +83,7 @@ public class AndroidGdxAppodeal  implements AppodealInterface, BannerCallbacks, 
     }
     @Override
     public void initialize(String appId, int type) {
-        Appodeal.setFramework("gdx", "2.0.2");
+        Appodeal.setFramework("gdx", GdxAppodeal.getPluginVersion());
         Appodeal.initialize(activity, appId, type);
     }
 

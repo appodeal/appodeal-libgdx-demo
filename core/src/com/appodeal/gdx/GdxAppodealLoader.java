@@ -8,7 +8,7 @@ import com.badlogic.gdx.utils.reflect.ReflectionException;
 public class GdxAppodealLoader {
 
     private static final String CLASS_NAME_APPODEAL_ANDROID = "com.appodeal.gdx.android.AndroidGdxAppodeal";
-    private static final String CLASS_NAME_APPODEAL_IOS = "com.appodeal.gdx.ios.IOSGdxAppodeal";
+    private static final String CLASS_NAME_APPODEAL_IOS = "com.appodeal.gdx.ios.iOSGdxAppodeal";
 
     private static Class<?> gdxClazz = null;
     private static Object gdxAppObject = null;

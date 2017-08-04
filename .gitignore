@@ -62,4 +62,5 @@ build/
 
 ## OS Specific
 .DS_Store
-ios-moe/xcode
+ios-moe/xcode/Appodeal.framework
+ios-moe/xcode/Resources

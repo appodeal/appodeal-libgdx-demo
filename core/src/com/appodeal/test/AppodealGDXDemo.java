@@ -49,7 +49,7 @@ public class AppodealGDXDemo extends ApplicationAdapter {
 		if (Gdx.app.getType() == Application.ApplicationType.Android) {
 			APP_ID = "fee50c333ff3825fd6ad6d38cff78154de3025546d47a84f";
 		} else if (Gdx.app.getType() == Application.ApplicationType.iOS) {
-			APP_ID = "";
+			APP_ID = "4b46ef930cd37cf11da84ae4d41019abb7234d5bbce3f000";
 		} else {
 			APP_ID = "";
 		}

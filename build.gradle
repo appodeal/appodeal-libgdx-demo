@@ -60,12 +60,12 @@ project(":android") {
         compile 'com.google.android.gms:play-services-ads:10.2.0'
         compile 'com.google.android.gms:play-services-location:10.2.0'
 
-        compile 'com.android.support:multidex:1.0.1'
 
         compile fileTree(dir: 'libs', include: '*.jar')
-
-        compile(name:'adcolony-sdk-3.1.2', ext:'aar')
+        compile 'com.squareup.picasso:picasso:2.5.2'
+        compile 'com.android.support:multidex:1.0.1'
         compile(name:'mmedia-6.4.0', ext:'aar')
+        compile(name:'adcolony-sdk-3.1.2', ext:'aar')
     }
 }
 

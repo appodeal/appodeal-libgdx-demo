@@ -217,4 +217,9 @@ public class DisabledGdxAppodeal implements AppodealInterface {
     public void muteVideosIfCallsMuted(boolean flag) {
         disabledMessage();
     }
+	
+	@Override
+	public void destroy(int adTypes){
+		disabledMessage();
+	}
 }

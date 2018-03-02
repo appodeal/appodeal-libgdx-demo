@@ -48,4 +48,5 @@ public interface AppodealInterface {
     RewardParameters getRewardParameters(String placement);
     void startTestActivity();
     void muteVideosIfCallsMuted(boolean flag);
+	void destroy(int adType);
 }

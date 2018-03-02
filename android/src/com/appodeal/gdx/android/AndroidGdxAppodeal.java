@@ -409,4 +409,9 @@ public class AndroidGdxAppodeal  implements AppodealInterface, BannerCallbacks, 
     public void muteVideosIfCallsMuted(boolean flag) {
         Appodeal.muteVideosIfCallsMuted(flag);
     }
+	
+	@Override
+	public void destroy(int adTypes){
+		Appodeal.destroy(adTypes);
+	}
 }

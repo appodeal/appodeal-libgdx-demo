@@ -63,8 +63,8 @@
 -keep class * extends com.mopub.mobileads.CustomEventInterstitial {}
 -keep class * extends com.mopub.nativeads.CustomEventNative {}
 -keep class * extends com.mopub.mobileads.CustomEventRewardedVideo {}
+-keepclassmembers class ** { @com.mopub.common.util.ReflectionTarget *; }
 -dontwarn com.mopub.volley.toolbox.**
--keepclassmembers class ** { @com.mopub.common.util.ReflectionTarget *; } 
 
 # Applovin
 -keep class com.applovin.** { *; }
@@ -94,15 +94,8 @@
 # StartApp
 -keep class com.startapp.** { *;}
 -dontwarn com.startapp.**
+-dontwarn android.webkit.JavascriptInterface
 -keepattributes Exceptions, InnerClasses, Signature, Deprecated, SourceFile, LineNumberTable, *Annotation*, EnclosingMethod
-
-# Flurry
--keep class com.flurry.** { *; }
--dontwarn com.flurry.**
--keepattributes *Annotation*,EnclosingMethod,Signature
--keepclasseswithmembers class * {
-  public <init>(android.content.Context, android.util.AttributeSet, int);
-}
 
 # Avocarrot
 -keep class com.avocarrot.** { *; }
@@ -123,6 +116,7 @@
 -dontwarn android.webkit.**
 -dontwarn com.jirbo.adcolony.**
 -dontwarn com.adcolony.**
+-keepclassmembers class com.adcolony.sdk.ADCNative** { *; }
 
 # Vungle
 -keepattributes *Annotation*, Signature
@@ -138,6 +132,17 @@
 -keep class com.my.target.** { *; }
 -dontwarn com.my.target.**
 
+# Mobvista
+-keepattributes Signature
+-keepattributes *Annotation*
+-keep class com.mobvista.** {*; }
+-keep interface com.mobvista.** {*; }
+-keep class android.support.v4.** { *; }
+-dontwarn com.mobvista.**
+-keep class **.R$* { public static final int mobvista*; }
+-keep class com.alphab.** {*; }
+-keep interface com.alphab.** {*; }
+
 # Admob
 -keep class com.google.android.gms.ads.** { *; }
 
@@ -148,6 +153,9 @@
 # IronSource
 -keepclassmembers class com.ironsource.sdk.controller.IronSourceWebView$JSInterface { public *; }
 -keepclassmembers class * implements android.os.Parcelable { public static final android.os.Parcelable$Creator *; }
+-keep public class com.google.android.gms.ads.** { public *; }
+-dontwarn com.moat.**
+-keep class com.moat.** { public protected private *; }
 -keep class com.ironsource.** { *; }
 -dontwarn com.ironsource.**
 
@@ -272,7 +280,3 @@
 -keep class android.support.v4.view.PagerAdapter { *; }
 -keep class android.support.v4.view.ViewPager { *; }
 -keep class android.support.v4.content.ContextCompat { *; }
-
-# support-v7-recyclerview
--keep class android.support.v7.widget.RecyclerView { *; }
--keep class android.support.v7.widget.LinearLayoutManager { *; }

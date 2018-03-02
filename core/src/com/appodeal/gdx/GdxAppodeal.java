@@ -15,7 +15,7 @@ public class GdxAppodeal {
 
     public enum LogLevel{none, debug, verbose};
     public static final int NONE = 0;
-    public static final int INTERSTITIAL = 1;
+    public static final int INTERSTITIAL = 3;
     public static final int REWARDED_VIDEO = 128;
     public static final int NON_SKIPPABLE_VIDEO = 128;
     public static final int BANNER = 4;
@@ -181,6 +181,10 @@ public class GdxAppodeal {
     }
 
     public static String getPluginVersion() {
-        return "2.1.0";
+        return "2.1.7";
     }
+	
+	public static void destroy(int adTypes){
+		getInstance().destroy(adTypes);
+	}
 }

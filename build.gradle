@@ -57,15 +57,28 @@ project(":android") {
         natives "com.badlogicgames.gdx:gdx-box2d-platform:$gdxVersion:natives-x86"
         natives "com.badlogicgames.gdx:gdx-box2d-platform:$gdxVersion:natives-x86_64"
 
-        compile 'com.google.android.gms:play-services-ads:10.2.0'
-        compile 'com.google.android.gms:play-services-location:10.2.0'
-
-
         compile fileTree(dir: 'libs', include: '*.jar')
-        compile 'com.squareup.picasso:picasso:2.5.2'
         compile 'com.android.support:multidex:1.0.1'
-        compile(name:'mmedia-6.4.0', ext:'aar')
-        compile(name:'adcolony-sdk-3.1.2', ext:'aar')
+        compile 'com.squareup.picasso:picasso:2.5.2'
+        compile 'com.google.android.gms:play-services-ads:10.2.1'
+		compile 'com.google.android.gms:play-services-location:10.2.1'
+		compile 'com.squareup.picasso:picasso:2.5.2' //for Inmobi
+		compile name: 'adcolony-sdk-3.2.1', ext: 'aar'
+		compile name: 'mmedia-6.4.0', ext: 'aar'
+		compile name: 'mobvista_alphab', ext: 'aar'
+		compile name: 'mobvista_appwall', ext: 'aar'
+		compile name: 'mobvista_appwallext', ext: 'aar'
+		compile name: 'mobvista_common', ext: 'aar'
+		compile name: 'mobvista_interstitial', ext: 'aar'
+		compile name: 'mobvista_mvdownloads', ext: 'aar'
+		compile name: 'mobvista_mvjscommon', ext: 'aar'
+		compile name: 'mobvista_mvnative', ext: 'aar'
+		compile name: 'mobvista_nativeex', ext: 'aar'
+		compile name: 'mobvista_offerwall', ext: 'aar'
+		compile name: 'mobvista_playercommon', ext: 'aar'
+		compile name: 'mobvista_reward', ext: 'aar'
+		compile name: 'mobvista_videocommon', ext: 'aar'
+		compile name: 'mobvista_videofeeds', ext: 'aar'
     }
 }
 

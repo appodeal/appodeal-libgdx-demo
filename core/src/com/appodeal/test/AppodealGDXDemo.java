@@ -4,7 +4,6 @@ import com.appodeal.gdx.GdxAppodeal;
 import com.appodeal.gdx.callbacks.BannerCallback;
 import com.appodeal.gdx.callbacks.InterstitialCallback;
 import com.appodeal.gdx.callbacks.RewardedVideoCallback;
-import com.appodeal.gdx.callbacks.SkippableVideoCallback;
 import com.appodeal.gdx.data.UserSettings;
 import com.badlogic.gdx.Application;
 import com.badlogic.gdx.ApplicationAdapter;
@@ -33,7 +32,6 @@ public class AppodealGDXDemo extends ApplicationAdapter {
 
 	private boolean enableLogging = false;
 	private boolean enableTesting = false;
-	private boolean confirm = false;
 	private boolean enableAutocache = false;
 	private boolean disableSmartBanners = false;
 	private boolean disableBannerAnimation = false;
@@ -41,6 +39,7 @@ public class AppodealGDXDemo extends ApplicationAdapter {
 	private boolean enableTriggerOnLoadedOnPrecache = false;
 	private boolean disableLocationPermissionCheck = false;
 	private boolean disableWriteExternalStorageCheck = false;
+	private boolean muteVideoIfCalledMuted = false;
 
 	public void create() {
 		Gdx.app.setLogLevel(Application.LOG_DEBUG);
@@ -50,7 +49,7 @@ public class AppodealGDXDemo extends ApplicationAdapter {
 		if (Gdx.app.getType() == Application.ApplicationType.Android) {
 			APP_ID = "fee50c333ff3825fd6ad6d38cff78154de3025546d47a84f";
 		} else if (Gdx.app.getType() == Application.ApplicationType.iOS) {
-			APP_ID = "";
+			APP_ID = "4b46ef930cd37cf11da84ae4d41019abb7234d5bbce3f000";
 		} else {
 			APP_ID = "";
 		}
@@ -58,17 +57,11 @@ public class AppodealGDXDemo extends ApplicationAdapter {
 		GdxAppodeal.onCreate();
 		GdxAppodeal.setBannerCallbacks(bannerCallbacks);
 		GdxAppodeal.setInterstitialCallbacks(interstitialCallbacks);
-		GdxAppodeal.setSkippableVideoCallbacks(skippableVideoCallbacks);
 		GdxAppodeal.setRewardedVideoCallbacks(rewardedVideoCallbacks);
 
 		UserSettings userSettings = GdxAppodeal.getUserSettings();
 		userSettings.setAge(42);
 		userSettings.setGender(UserSettings.Gender.MALE);
-		userSettings.setAlcohol(UserSettings.Alcohol.POSITIVE);
-		userSettings.setSmoking(UserSettings.Smoking.POSITIVE);
-		userSettings.setRelation(UserSettings.Relation.SINGLE);
-		userSettings.setOccupation(UserSettings.Occupation.SCHOOL);
-		userSettings.setInterests("drinking, smoking");
 
 		GdxAppodeal.setCustomRule("test_rule", true);
 		GdxAppodeal.requestAndroidMPermissions(null);
@@ -124,11 +117,11 @@ public class AppodealGDXDemo extends ApplicationAdapter {
 						else
 							GdxAppodeal.setLogLevel(GdxAppodeal.LogLevel.none);
 						GdxAppodeal.setTesting(enableTesting);
-						if(confirm) GdxAppodeal.confirm(type);
 						GdxAppodeal.setSmartBanners(!disableSmartBanners);
 						GdxAppodeal.setBannerAnimation(!disableBannerAnimation);
 						GdxAppodeal.set728x90Banners(!disable728x90Banners);
-						GdxAppodeal.setOnLoadedTriggerBoth(type, enableTriggerOnLoadedOnPrecache);
+						GdxAppodeal.setTriggerOnLoadedOnPrecache(type, enableTriggerOnLoadedOnPrecache);
+						GdxAppodeal.muteVideosIfCallsMuted(muteVideoIfCalledMuted);
 						if(disableLocationPermissionCheck) GdxAppodeal.disableLocationPermissionCheck();
 						if(disableWriteExternalStorageCheck) GdxAppodeal.disableWriteExternalStoragePermissionCheck();
 
@@ -147,14 +140,14 @@ public class AppodealGDXDemo extends ApplicationAdapter {
 					case IsLoaded:
 						showMessage(GdxAppodeal.isLoaded(type) ? "yes" : "no");
 						break;
+					case CanShow:
+						showMessage(GdxAppodeal.canShow(type)? "yes" : "no");
+						break;
 					case IsPreCache:
 						showMessage(GdxAppodeal.isPreCache(type) ? "yes" : "no");
 						break;
 					case Hide:
 						GdxAppodeal.hide(type);
-						break;
-					case GetVersion:
-						showMessage(GdxAppodeal.getVersion());
 						break;
 					case Exit:
 						Gdx.app.exit();
@@ -186,9 +179,6 @@ public class AppodealGDXDemo extends ApplicationAdapter {
 					case Testing:
 						enableTesting = currentCb.isChecked();
 						break;
-					case Confirm:
-						confirm = currentCb.isChecked();
-						break;
 					case AutoCache:
 						enableAutocache = currentCb.isChecked();
 						break;
@@ -209,6 +199,9 @@ public class AppodealGDXDemo extends ApplicationAdapter {
 						break;
 					case  DisableWriteExternalStorageCheck:
 						disableWriteExternalStorageCheck = currentCb.isChecked();
+						break;
+					case MuteVideosIfCalledMuted:
+						muteVideoIfCalledMuted = currentCb.isChecked();
 						break;
 				}
 			}
@@ -236,100 +229,76 @@ public class AppodealGDXDemo extends ApplicationAdapter {
 	BannerCallback bannerCallbacks = new BannerCallback() {
 		@Override
 		public void onBannerLoaded() {
-
+			Gdx.app.log("AppodealGDX", "onBannerLoaded");
 		}
 
 		@Override
 		public void onBannerFailedToLoad() {
-
+			Gdx.app.log("AppodealGDX", "onBannerFailedToLoad");
 		}
 
 		@Override
 		public void onBannerShown() {
-
+			Gdx.app.log("AppodealGDX", "onBannerShown");
 		}
 
 		@Override
 		public void onBannerClicked() {
-
+			Gdx.app.log("AppodealGDX", "onBannerClicked");
 		}
 	};
 
 	InterstitialCallback interstitialCallbacks = new InterstitialCallback() {
 		@Override
 		public void onInterstitialLoaded(boolean isPrecache) {
+			Gdx.app.log("AppodealGDX", "onInterstitialLoaded");
 		}
 
 		@Override
 		public void onInterstitialFailedToLoad() {
-
+			Gdx.app.log("AppodealGDX", "onInterstitialFailedToLoad");
 		}
 
 		@Override
 		public void onInterstitialShown() {
-
+			Gdx.app.log("AppodealGDX", "onInterstitialShown");
 		}
 
 		@Override
 		public void onInterstitialClicked() {
-
+			Gdx.app.log("AppodealGDX", "onInterstitialClicked");
 		}
 
 		@Override
 		public void onInterstitialClosed() {
-
-		}
-	};
-
-	SkippableVideoCallback skippableVideoCallbacks = new SkippableVideoCallback() {
-		@Override
-		public void onSkippableVideoLoaded() {
-		}
-
-		@Override
-		public void onSkippableVideoFailedToLoad() {
-
-		}
-
-		@Override
-		public void onSkippableVideoShown() {
-
-		}
-
-		@Override
-		public void onSkippableVideoFinished() {
-
-		}
-
-		@Override
-		public void onSkippableVideoClosed() {
-
+			Gdx.app.log("AppodealGDX", "onInterstitialClosed");
 		}
 	};
 
 	RewardedVideoCallback rewardedVideoCallbacks = new RewardedVideoCallback() {
 		@Override
 		public void onRewardedVideoLoaded() {
-
+			Gdx.app.log("AppodealGDX", "onRewardedVideoLoaded");
 		}
 
 		@Override
 		public void onRewardedVideoFailedToLoad() {
-
+			Gdx.app.log("AppodealGDX", "onRewardedVideoFailedToLoad");
 		}
 
 		@Override
 		public void onRewardedVideoShown() {
-
+			Gdx.app.log("AppodealGDX", "onRewardedVideoShown");
 		}
 
 		@Override
 		public void onRewardedVideoFinished(int amount, String name) {
+			Gdx.app.log("AppodealGDX", "onRewardedVideoFinished");
 		}
 
 		@Override
 		public void onRewardedVideoClosed() {
-
+			Gdx.app.log("AppodealGDX", "onRewardedVideoClosed");
 		}
 	};
 }

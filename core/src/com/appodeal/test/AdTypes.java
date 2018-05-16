@@ -5,7 +5,6 @@ import com.appodeal.gdx.GdxAppodeal;
 public enum AdTypes {
     NONE(GdxAppodeal.NONE),
     INTERSTITIAL(GdxAppodeal.INTERSTITIAL),
-    SKIPPABLE_VIDEO(GdxAppodeal.SKIPPABLE_VIDEO),
     NON_SKIPPABLE_VIDEO(GdxAppodeal.NON_SKIPPABLE_VIDEO),
     REWARDED_VIDEO(GdxAppodeal.REWARDED_VIDEO),
     BANNER(GdxAppodeal.BANNER),

@@ -6,8 +6,8 @@ public enum TestOptions {
     Show,
     ShowWIthPlacement,
     IsLoaded,
+    CanShow,
     IsPreCache,
     Hide,
-    GetVersion,
     Exit
 }

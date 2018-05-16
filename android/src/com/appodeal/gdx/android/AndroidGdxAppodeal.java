@@ -1,13 +1,13 @@
 package com.appodeal.gdx.android;
 
 import android.app.Activity;
+import android.util.Pair;
 
 import com.appodeal.ads.Appodeal;
 import com.appodeal.ads.BannerCallbacks;
 import com.appodeal.ads.InterstitialCallbacks;
 import com.appodeal.ads.NonSkippableVideoCallbacks;
 import com.appodeal.ads.RewardedVideoCallbacks;
-import com.appodeal.ads.SkippableVideoCallbacks;
 import com.appodeal.ads.utils.Log;
 import com.appodeal.ads.utils.PermissionsHelper;
 import com.appodeal.gdx.AppodealInterface;
@@ -17,20 +17,17 @@ import com.appodeal.gdx.callbacks.InterstitialCallback;
 import com.appodeal.gdx.callbacks.NonSkippableVideoCallback;
 import com.appodeal.gdx.callbacks.PermissionCallback;
 import com.appodeal.gdx.callbacks.RewardedVideoCallback;
-import com.appodeal.gdx.callbacks.SkippableVideoCallback;
+import com.appodeal.gdx.data.RewardParameters;
 import com.appodeal.gdx.data.UserSettings;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.utils.reflect.ClassReflection;
 import com.badlogic.gdx.utils.reflect.ReflectionException;
 
-import java.util.concurrent.Callable;
-
-public class AndroidGdxAppodeal  implements AppodealInterface, BannerCallbacks, InterstitialCallbacks, SkippableVideoCallbacks, RewardedVideoCallbacks, NonSkippableVideoCallbacks, PermissionsHelper.AppodealPermissionCallbacks {
+public class AndroidGdxAppodeal  implements AppodealInterface, BannerCallbacks, InterstitialCallbacks, RewardedVideoCallbacks, NonSkippableVideoCallbacks, PermissionsHelper.AppodealPermissionCallbacks {
     private Activity activity;
 
     private InterstitialCallback interstitialListener;
     private BannerCallback bannerListener;
-    private SkippableVideoCallback skippableVideoListener;
     private NonSkippableVideoCallback nonSkippableVideoListener;
     private RewardedVideoCallback rewardedVideoListener;
     private PermissionCallback permissionListener;
@@ -86,6 +83,7 @@ public class AndroidGdxAppodeal  implements AppodealInterface, BannerCallbacks, 
     }
     @Override
     public void initialize(String appId, int type) {
+        Appodeal.setFramework("gdx", GdxAppodeal.getPluginVersion());
         Appodeal.initialize(activity, appId, type);
     }
 
@@ -99,12 +97,6 @@ public class AndroidGdxAppodeal  implements AppodealInterface, BannerCallbacks, 
     public void setBannerCallbacks(BannerCallback listener) {
         Appodeal.setBannerCallbacks(this);
         bannerListener = listener;
-    }
-
-    @Override
-    public void setSkippableVideoCallbacks(SkippableVideoCallback listener) {
-        Appodeal.setSkippableVideoCallbacks(this);
-        skippableVideoListener = listener;
     }
 
     @Override
@@ -149,8 +141,8 @@ public class AndroidGdxAppodeal  implements AppodealInterface, BannerCallbacks, 
     }
 
     @Override
-    public void setOnLoadedTriggerBoth(int type, boolean onLoadedTriggerBoth) {
-        Appodeal.setOnLoadedTriggerBoth(type, onLoadedTriggerBoth);
+    public void setTriggerOnLoadedOnPrecache(int type, boolean flag) {
+        Appodeal.setTriggerOnLoadedOnPrecache(type, flag);
     }
 
     @Override
@@ -176,11 +168,6 @@ public class AndroidGdxAppodeal  implements AppodealInterface, BannerCallbacks, 
                 Appodeal.hide(activity, type);
             }
         });
-    }
-
-    @Override
-    public void confirm(int type) {
-        Appodeal.confirm(type);
     }
 
     @Override
@@ -258,29 +245,6 @@ public class AndroidGdxAppodeal  implements AppodealInterface, BannerCallbacks, 
     @Override
     public void onInterstitialClosed() {
         interstitialListener.onInterstitialClosed();
-    }
-
-    @Override
-    public void onSkippableVideoLoaded() {
-        skippableVideoListener.onSkippableVideoLoaded();
-    }
-
-    @Override
-    public void onSkippableVideoFailedToLoad() { skippableVideoListener.onSkippableVideoFailedToLoad(); }
-
-    @Override
-    public void onSkippableVideoShown() {
-        skippableVideoListener.onSkippableVideoShown();
-    }
-
-    @Override
-    public void onSkippableVideoFinished() {
-        skippableVideoListener.onSkippableVideoFinished();
-    }
-
-    @Override
-    public void onSkippableVideoClosed(boolean isFinished) {
-        skippableVideoListener.onSkippableVideoClosed();
     }
 
     @Override
@@ -407,4 +371,47 @@ public class AndroidGdxAppodeal  implements AppodealInterface, BannerCallbacks, 
     public void onCreate() {
         onResume();
     }
+
+    @Override
+    public boolean canShow(int adType) {
+        return Appodeal.canShow(adType);
+    }
+
+    @Override
+    public boolean canShow(int adType, String placement) {
+        return Appodeal.canShow(adType, placement);
+    }
+
+    @Override
+    public RewardParameters getRewardParameters() {
+        Pair<Integer, String> p = Appodeal.getRewardParameters();
+        RewardParameters ret = new RewardParameters();
+        ret.amount = p.first;
+        ret.currencyName = p.second;
+        return ret;
+    }
+
+    @Override
+    public RewardParameters getRewardParameters(String placement) {
+        Pair<Integer, String> p = Appodeal.getRewardParameters(placement);
+        RewardParameters ret = new RewardParameters();
+        ret.amount = p.first;
+        ret.currencyName = p.second;
+        return ret;
+    }
+
+    @Override
+    public void startTestActivity() {
+        Appodeal.startTestActivity(this.activity);
+    }
+
+    @Override
+    public void muteVideosIfCallsMuted(boolean flag) {
+        Appodeal.muteVideosIfCallsMuted(flag);
+    }
+	
+	@Override
+	public void destroy(int adTypes){
+		Appodeal.destroy(adTypes);
+	}
 }

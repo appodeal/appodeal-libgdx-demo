@@ -5,7 +5,7 @@ import com.appodeal.gdx.callbacks.InterstitialCallback;
 import com.appodeal.gdx.callbacks.NonSkippableVideoCallback;
 import com.appodeal.gdx.callbacks.PermissionCallback;
 import com.appodeal.gdx.callbacks.RewardedVideoCallback;
-import com.appodeal.gdx.callbacks.SkippableVideoCallback;
+import com.appodeal.gdx.data.RewardParameters;
 import com.appodeal.gdx.data.UserSettings;
 import com.badlogic.gdx.Gdx;
 
@@ -25,11 +25,6 @@ public class DisabledGdxAppodeal implements AppodealInterface {
 
     @Override
     public void setBannerCallbacks(BannerCallback listener) {
-        disabledMessage();
-    }
-
-    @Override
-    public void setSkippableVideoCallbacks(SkippableVideoCallback listener) {
         disabledMessage();
     }
 
@@ -61,7 +56,7 @@ public class DisabledGdxAppodeal implements AppodealInterface {
     }
 
     @Override
-    public void setOnLoadedTriggerBoth(int type, boolean onLoadedTriggerBoth) {
+    public void setTriggerOnLoadedOnPrecache(int type, boolean onLoadedTriggerBoth) {
         disabledMessage();
     }
 
@@ -84,11 +79,6 @@ public class DisabledGdxAppodeal implements AppodealInterface {
 
     @Override
     public void hide(int type) {
-        disabledMessage();
-    }
-
-    @Override
-    public void confirm(int type) {
         disabledMessage();
     }
 
@@ -193,4 +183,43 @@ public class DisabledGdxAppodeal implements AppodealInterface {
     public void onResume() {
         Gdx.app.debug(TAG, "GdxAppodeal not loaded or disabled!");
     }
+
+    @Override
+    public boolean canShow(int adType) {
+        disabledMessage();
+        return false;
+    }
+
+    @Override
+    public boolean canShow(int adType, String placement) {
+        disabledMessage();
+        return false;
+    }
+
+    @Override
+    public RewardParameters getRewardParameters() {
+        disabledMessage();
+        return null;
+    }
+
+    @Override
+    public RewardParameters getRewardParameters(String placement) {
+        disabledMessage();
+        return null;
+    }
+
+    @Override
+    public void startTestActivity() {
+        disabledMessage();
+    }
+
+    @Override
+    public void muteVideosIfCallsMuted(boolean flag) {
+        disabledMessage();
+    }
+	
+	@Override
+	public void destroy(int adTypes){
+		disabledMessage();
+	}
 }

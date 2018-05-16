@@ -5,7 +5,7 @@ import com.appodeal.gdx.callbacks.InterstitialCallback;
 import com.appodeal.gdx.callbacks.NonSkippableVideoCallback;
 import com.appodeal.gdx.callbacks.PermissionCallback;
 import com.appodeal.gdx.callbacks.RewardedVideoCallback;
-import com.appodeal.gdx.callbacks.SkippableVideoCallback;
+import com.appodeal.gdx.data.RewardParameters;
 import com.appodeal.gdx.data.UserSettings;
 
 public class GdxAppodeal {
@@ -15,8 +15,7 @@ public class GdxAppodeal {
 
     public enum LogLevel{none, debug, verbose};
     public static final int NONE = 0;
-    public static final int INTERSTITIAL = 1;
-    public static final int SKIPPABLE_VIDEO = 2;
+    public static final int INTERSTITIAL = 3;
     public static final int REWARDED_VIDEO = 128;
     public static final int NON_SKIPPABLE_VIDEO = 128;
     public static final int BANNER = 4;
@@ -41,10 +40,6 @@ public class GdxAppodeal {
         getInstance().setBannerCallbacks(listener);
     }
 
-    public static void setSkippableVideoCallbacks(SkippableVideoCallback listener) {
-        getInstance().setSkippableVideoCallbacks(listener);
-    }
-
     public static void setNonSkippableVideoCallbacks(NonSkippableVideoCallback listener) {
         getInstance().setNonSkippableVideoCallbacks(listener);
     }
@@ -65,10 +60,6 @@ public class GdxAppodeal {
         getInstance().setAutoCache(type, autoCache);
     }
 
-    public static void setOnLoadedTriggerBoth(int type, boolean onLoadedTriggerBoth) {
-        getInstance().setOnLoadedTriggerBoth(type, onLoadedTriggerBoth);
-    }
-
     public static boolean isLoaded(int type) {
         return getInstance().isLoaded(type);
     }
@@ -83,9 +74,6 @@ public class GdxAppodeal {
 
     public static  void hide(int type) {
         getInstance().hide(type);
-    }
-    public static void confirm(int type) {
-        getInstance().confirm(type);
     }
 
     public static void disableLocationPermissionCheck() {
@@ -163,4 +151,40 @@ public class GdxAppodeal {
     public static void onCreate() {
         getInstance().onCreate();
     }
+
+    public static void setTriggerOnLoadedOnPrecache(int adType, boolean flag){
+        getInstance().setTriggerOnLoadedOnPrecache(adType, flag);
+    }
+
+    public static  boolean canShow(int adType){
+        return getInstance().canShow(adType);
+    }
+
+    public static  boolean canShow(int adType, String placement){
+        return getInstance().canShow(adType, placement);
+    }
+
+    public static RewardParameters getRewardParameters(){
+        return getInstance().getRewardParameters();
+    }
+
+    public static RewardParameters getRewardParameters(String placement){
+        return  getInstance().getRewardParameters();
+    }
+
+    public static void startTestActivity(){
+        getInstance().startTestActivity();
+    }
+
+    public static void muteVideosIfCallsMuted(boolean flag){
+        getInstance().muteVideosIfCallsMuted(flag);
+    }
+
+    public static String getPluginVersion() {
+        return "2.1.7";
+    }
+	
+	public static void destroy(int adTypes){
+		getInstance().destroy(adTypes);
+	}
 }

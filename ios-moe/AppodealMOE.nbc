@@ -1,0 +1,1 @@
+{"output":"src/","platform":"iOS","bindings":[{"type":"framework","name":"Appodeal","objcClassGenerationMode":"Binding","frameworkPath":"xcode/Appodeal.framework","packageBase":"org.moe","importCode":"#import <Appodeal/Appodeal.h>"}]}

@@ -341,6 +341,183 @@ compile 'com.google.android.gms:play-services-location:10.2.0'
 ### Additional Settings
 Note that you should enable Multidex Support for using base Appodeal libGDX plugin. If you don't want to use multidex for some reasons contact Support on Appodeal website to get special build of plugin, or replace current jar's and aar's inside libs folder of android module using MaxDex build from [Docs page](https://www.appodeal.com/sdk/) -> Android. To add multidex support follow [this](https://developer.android.com/studio/build/multidex.html) guide.
 
+## libGDX Integration
+
+### Ad Types
+
++ GdxAppodeal.INTERSTITIAL
++ GdxAppodeal.BANNER
++ GdxAppodeal.REWARDED_VIDEO
++ GdxAppodeal.NON_SKIPPABLE_VIDEO
+
+Ad types can be combined using "|" operator. For example GdxAppodeal.INTERSTITIAL | GdxAppodeal.SKIPPABLE_VIDEO
+
+### SDK Initialization
+
+To initialize SDK you need to add following code in create method of your main adapter:
+
+```java
+String appKey = "e7e04e54ae0a8d28cff2f7e7e7d094e78b2a09743be2cc4a";
+GdxAppodeal.initialize(appKey, GdxAppodeal.BANNER | GdxAppodeal.INTERSTITIAL);
+```
++ To initialize only interstitials use GdxAppodeal.initialize(appKey, GdxAppodeal.INTERSTITIAL)
++ To initialize only banners use GdxAppodeal.initialize(appKey, GdxAppodeal.BANNER)
++ To initialize only rewarded video use GdxAppodeal.initialize(appKey, GdxAppodeal.REWARDED_VIDEO)
++ To initialize only non-skippable video use GdxAppodeal.initialize(appKey, GdxAppodeal.NON_SKIPPABLE_VIDEO)
+
+### Display Ad
+
+```java
+GdxAppodeal.show(AdTypes);
+```
+
+### Checking if ad is loaded
+
+```java
+GdxAppodeal.isLoaded(AdTypes);
+```
+
+### Hiding banner
+
+```java
+GdxAppodeal.hide(GDXAppodeal.BANNER);
+```
+
+### Setting Callbacks
+
+#### Interstitial:
+
+```java
+GdxAppodeal.setInterstitialCallbacks(new InterstitialCallback() {
+  @Override
+  public void onInterstitialLoaded(boolean isPrecache) { }
+
+  @Override
+  public void onInterstitialFailedToLoad() { }
+
+  @Override
+  public void onInterstitialShown() { }
+
+  @Override
+  public void onInterstitialClicked() { }
+
+  @Override
+  public void onInterstitialClosed() { }
+});
+```
+
+#### Banner:
+
+```java
+GdxAppodeal.setBannerCallbacks(new BannerCallback() {
+  @Override
+  public void onBannerLoaded() { }
+
+  @Override
+  public void onBannerFailedToLoad() { }
+
+  @Override
+  public void onBannerShown() { }
+
+  @Override
+  public void onBannerClicked() { }
+});
+```
+
+#### Rewarded Video:
+
+```java
+GdxAppodeal.setRewardedVideoCallbacks(new RewardedVideoCallback() {
+  @Override
+  public void onRewardedVideoLoaded() { }
+
+  @Override
+  public void onRewardedVideoFailedToLoad() { }
+
+  @Override
+  public void onRewardedVideoShown() { }
+
+  @Override
+  public void onRewardedVideoFinished(int amount, String name) { }
+
+  @Override
+  public void onRewardedVideoClosed() { }
+});
+```
+
+#### Non Skippable Video:
+
+```java
+GdxAppodeal.setNonSkippableVideoCallbacks(new NonSkippableVideoCallback() {
+  @Override
+  public void onNonSkippableVideoLoaded() { }
+
+  @Override
+  public void onNonSkippableVideoFailedToLoad() { }
+
+  @Override
+  public void onNonSkippableVideoShown() { }
+
+  @Override
+  public void onNonSkippableVideoFinished() { }
+
+  @Override
+  public void onNonSkippableVideoClosed() { }
+});
+```
+
+### Advanced Features
+
+#### Enabling test mode
+
+```java
+GdxAppodeal.setTesting(true);
+```
+
+#### Enabling logging
+
+```java
+GdxAppodeal.setLogLevel(level)
+```
+
+Available params: LogLevel.none, LogLevel.debug, LogLevel.verbose
+
+#### Manual ad caching
+
+```java
+GdxAppodeal.cache(adTypes);
+```
+
++ You should disable automatic caching before SDK initialization using setAutoCache(adTypes, false).
++ To cache interstitial use GdxAppodeal.cache(GdxAppodeal.INTERSTITIAL)
++ To cache rewarded video use GdxAppodeal.cache(GdxAppodeal.REWARDED_VIDEO)
++ To cache non-skippable video use GdxAppodeal.cache(GdxAppodeal.NON_SKIPPABLE_VIDEO)
++ To cache interstitial and non skippable video use GdxAppodeal.cache(GdxAppodeal.INTERSTITIAL | GdxAppodeal.NON_SKIPPABLE_VIDEO)
++ To cache banner use GdxAppodeal.cache(GdxAppodeal.BANNER)
+
+#### Enabling or disabling automatic caching
+
+```java
+GdxAppodeal.setAutoCache(adTypes, false);
+```
+
++ Should be used before SDK initialization
++ To disable automatic caching for interstitials use GdxAppodeal.setAutoCache(GdxAppodeal.INTERSTITIAL, false)
++ To disable automatic caching for rewarded videos use GdxAppodeal.setAutoCache(GdxAppodeal.REWARDED_VIDEO, false)
++ To disable automatic caching for non-skippable videos use GdxAppodeal.setAutoCache(GdxAppodeal.NON_SKIPPABLE_VIDEO, false)
++ To disable automatic caching for banners use GdxAppodeal.setAutoCache(GdxAppodeal.BANNER, false)
+
+#### Disabling networks
+
+```java
+GdxAppodeal.disableNetwork((String)network);
+```
+
+Should be used before SDK initialization
+
+Available parameters: "adcolony", "admob", "amazon_ads", "applovin", "appnext", "avocarrot", "chartboost", "facebook", "flurry", "inmobi", "inner-active", "ironsource", "mailru", "mmedia", "mopub", "mobvista", "ogury", "openx", "pubnative", "smaato", "startapp", "tapjoy", "unity_ads", "vungle", "yandex"
+
+
 ## Versions & Requirements
 
 Current plugin version: 2.1.10

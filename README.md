@@ -6,11 +6,11 @@ libGDX plugin for cross-platform Appodeal SDK support
 
 Download Plugin here and unzip it somewhere.
 
-### Core Module
+#### Core Module
 
 Copy com folder from core/src folder to your source folder inside core module. Usually it is named src or java/main.
 
-### iOS Module
+#### iOS Module
 
 + Download Appodeal iOS SDK from [Docs page](appodeal.com/sdk) -> iOS -> Objective-C, unzip and place `Appodeal.framework` under ios-moe/xcode folder.
 + Copy contents of src folder from `core/src` folder to your source folder inside `ios-moe` module. Usually it is named `src` or `java/main`.
@@ -58,7 +58,7 @@ WebKit
 </dict>
 ```
 
-### Android Module
+#### Android Module
 
 + Copy contents of libs folder from android/libs folder to your android/libs folder.
 + Copy com folder from android/src folder to your source folder inside core module. Usually it is named src or java/main.
@@ -336,15 +336,3 @@ iOS MOE requirements:
 Tested on:
 + libGDX 1.9.6
 + MOE 1.3.6
-
-## Changelog
-
-2.1.0 (03/08/2017)
-
-+ Added iOS MOE Support
-+ iOS Appodeal SDK updated to 2.1.0
-+ Android Appodeal SDK updated to 2.1.0
-+ added GdxAppodeal.canShow method
-+ added GdxAppodeal.startTestActivity method (Android only) to test networks integration
-+ added GdxAppodeal.muteVideosIfCallsMuted (Android only, iOS handled by OS) to mute ads sound if calls muted on phone
-+ GdxAppodeal.setOnLoadedTriggerBoth method renamed to GdxAppodeal.setTriggerOnLoadedOnPrecache

@@ -70,4 +70,7 @@ public final class APDFramework {
 	@Generated
 	@NUInt
 	public static final long Defold = 0x0000000000000014L;
+	@Generated
+	@NUInt
+	public static final long BuildBox = 0x0000000000000015L;
 }

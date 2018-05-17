@@ -58,31 +58,29 @@
 		660A791D1EC0754400F954E2 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 660A79041EC0754400F954E2 /* WebKit.framework */; };
 		662D6D3B1F33E0B800F76ABE /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 662D6D3A1F33E0B800F76ABE /* Social.framework */; };
 		6657804B1F32209300A3910E /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6657804A1F32209300A3910E /* ImageIO.framework */; };
-		665780661F32210600A3910E /* Appodeal.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 6657804D1F32210600A3910E /* Appodeal.bundle */; };
-		665780671F32210600A3910E /* button-close-default.png in Resources */ = {isa = PBXBuildFile; fileRef = 6657804E1F32210600A3910E /* button-close-default.png */; };
-		665780681F32210600A3910E /* button-close-highlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = 6657804F1F32210600A3910E /* button-close-highlighted.png */; };
-		665780691F32210600A3910E /* MPAdBrowserController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 665780501F32210600A3910E /* MPAdBrowserController.xib */; };
-		6657806A1F32210600A3910E /* MPCloseBtn.png in Resources */ = {isa = PBXBuildFile; fileRef = 665780511F32210600A3910E /* MPCloseBtn.png */; };
-		6657806B1F32210600A3910E /* MPCloseBtn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 665780521F32210600A3910E /* MPCloseBtn@2x.png */; };
-		6657806C1F32210600A3910E /* MPCloseBtn@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 665780531F32210600A3910E /* MPCloseBtn@3x.png */; };
-		6657806D1F32210600A3910E /* MPCloseButtonX.png in Resources */ = {isa = PBXBuildFile; fileRef = 665780541F32210600A3910E /* MPCloseButtonX.png */; };
-		6657806E1F32210600A3910E /* MPCloseButtonX@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 665780551F32210600A3910E /* MPCloseButtonX@2x.png */; };
-		6657806F1F32210600A3910E /* MPCloseButtonX@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 665780561F32210600A3910E /* MPCloseButtonX@3x.png */; };
-		665780701F32210600A3910E /* MPDAAIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 665780571F32210600A3910E /* MPDAAIcon.png */; };
-		665780711F32210600A3910E /* MPDAAIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 665780581F32210600A3910E /* MPDAAIcon@2x.png */; };
-		665780721F32210600A3910E /* MPDAAIcon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 665780591F32210600A3910E /* MPDAAIcon@3x.png */; };
-		665780731F32210600A3910E /* MPMutedBtn.png in Resources */ = {isa = PBXBuildFile; fileRef = 6657805A1F32210600A3910E /* MPMutedBtn.png */; };
-		665780741F32210600A3910E /* MPMutedBtn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6657805B1F32210600A3910E /* MPMutedBtn@2x.png */; };
-		665780751F32210600A3910E /* MPMutedBtn@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6657805C1F32210600A3910E /* MPMutedBtn@3x.png */; };
-		665780761F32210600A3910E /* MPPlayBtn.png in Resources */ = {isa = PBXBuildFile; fileRef = 6657805D1F32210600A3910E /* MPPlayBtn.png */; };
-		665780771F32210600A3910E /* MPPlayBtn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6657805E1F32210600A3910E /* MPPlayBtn@2x.png */; };
-		665780781F32210600A3910E /* MPPlayBtn@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6657805F1F32210600A3910E /* MPPlayBtn@3x.png */; };
-		665780791F32210600A3910E /* MPUnmutedBtn.png in Resources */ = {isa = PBXBuildFile; fileRef = 665780601F32210600A3910E /* MPUnmutedBtn.png */; };
-		6657807A1F32210600A3910E /* MPUnmutedBtn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 665780611F32210600A3910E /* MPUnmutedBtn@2x.png */; };
-		6657807B1F32210600A3910E /* MPUnmutedBtn@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 665780621F32210600A3910E /* MPUnmutedBtn@3x.png */; };
-		6657807C1F32210600A3910E /* MRAID.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 665780631F32210600A3910E /* MRAID.bundle */; };
-		6657807D1F32210600A3910E /* StartApp.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 665780641F32210600A3910E /* StartApp.bundle */; };
-		6657807E1F32210600A3910E /* TapjoyResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 665780651F32210600A3910E /* TapjoyResources.bundle */; };
+		787A474F20ADCEA0003E5C95 /* StartApp.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 787A473820ADCE9D003E5C95 /* StartApp.bundle */; };
+		787A475020ADCEA0003E5C95 /* TapjoyResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 787A473920ADCE9D003E5C95 /* TapjoyResources.bundle */; };
+		787A475120ADCEA0003E5C95 /* Appodeal.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 787A473A20ADCE9D003E5C95 /* Appodeal.bundle */; };
+		787A475220ADCEA0003E5C95 /* MRAID.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 787A473B20ADCE9D003E5C95 /* MRAID.bundle */; };
+		787A475320ADCEA0003E5C95 /* MPCloseButtonX.png in Resources */ = {isa = PBXBuildFile; fileRef = 787A473C20ADCE9D003E5C95 /* MPCloseButtonX.png */; };
+		787A475420ADCEA0003E5C95 /* MPDAAIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 787A473D20ADCE9E003E5C95 /* MPDAAIcon.png */; };
+		787A475520ADCEA0003E5C95 /* MPUnmutedBtn@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 787A473E20ADCE9E003E5C95 /* MPUnmutedBtn@3x.png */; };
+		787A475620ADCEA0003E5C95 /* MPCloseBtn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 787A473F20ADCE9E003E5C95 /* MPCloseBtn@2x.png */; };
+		787A475720ADCEA0003E5C95 /* MPCloseButtonX@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 787A474020ADCE9E003E5C95 /* MPCloseButtonX@2x.png */; };
+		787A475820ADCEA0003E5C95 /* MPMutedBtn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 787A474120ADCE9E003E5C95 /* MPMutedBtn@2x.png */; };
+		787A475920ADCEA0003E5C95 /* MPMutedBtn@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 787A474220ADCE9E003E5C95 /* MPMutedBtn@3x.png */; };
+		787A475A20ADCEA0003E5C95 /* MPDAAIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 787A474320ADCE9E003E5C95 /* MPDAAIcon@2x.png */; };
+		787A475B20ADCEA0003E5C95 /* MPCloseBtn@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 787A474420ADCE9E003E5C95 /* MPCloseBtn@3x.png */; };
+		787A475C20ADCEA0003E5C95 /* MPDAAIcon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 787A474520ADCE9E003E5C95 /* MPDAAIcon@3x.png */; };
+		787A475D20ADCEA0003E5C95 /* MPCloseButtonX@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 787A474620ADCE9E003E5C95 /* MPCloseButtonX@3x.png */; };
+		787A475E20ADCEA0003E5C95 /* MPMutedBtn.png in Resources */ = {isa = PBXBuildFile; fileRef = 787A474720ADCE9F003E5C95 /* MPMutedBtn.png */; };
+		787A475F20ADCEA0003E5C95 /* MPPlayBtn.png in Resources */ = {isa = PBXBuildFile; fileRef = 787A474820ADCE9F003E5C95 /* MPPlayBtn.png */; };
+		787A476020ADCEA0003E5C95 /* MPPlayBtn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 787A474920ADCE9F003E5C95 /* MPPlayBtn@2x.png */; };
+		787A476120ADCEA0003E5C95 /* MPCloseBtn.png in Resources */ = {isa = PBXBuildFile; fileRef = 787A474A20ADCE9F003E5C95 /* MPCloseBtn.png */; };
+		787A476220ADCEA0003E5C95 /* MPPlayBtn@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 787A474B20ADCE9F003E5C95 /* MPPlayBtn@3x.png */; };
+		787A476320ADCEA0003E5C95 /* MPAdBrowserController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 787A474C20ADCE9F003E5C95 /* MPAdBrowserController.xib */; };
+		787A476420ADCEA0003E5C95 /* MPUnmutedBtn.png in Resources */ = {isa = PBXBuildFile; fileRef = 787A474D20ADCE9F003E5C95 /* MPUnmutedBtn.png */; };
+		787A476520ADCEA0003E5C95 /* MPUnmutedBtn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 787A474E20ADCE9F003E5C95 /* MPUnmutedBtn@2x.png */; };
 		C995F7171EAA5D0A003E34E1 /* assets in Resources */ = {isa = PBXBuildFile; fileRef = C995F7161EAA5D0A003E34E1 /* assets */; };
 /* End PBXBuildFile section */
 
@@ -141,31 +139,29 @@
 		660A79041EC0754400F954E2 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		662D6D3A1F33E0B800F76ABE /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		6657804A1F32209300A3910E /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
-		6657804D1F32210600A3910E /* Appodeal.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Appodeal.bundle; sourceTree = "<group>"; };
-		6657804E1F32210600A3910E /* button-close-default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button-close-default.png"; sourceTree = "<group>"; };
-		6657804F1F32210600A3910E /* button-close-highlighted.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button-close-highlighted.png"; sourceTree = "<group>"; };
-		665780501F32210600A3910E /* MPAdBrowserController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MPAdBrowserController.xib; sourceTree = "<group>"; };
-		665780511F32210600A3910E /* MPCloseBtn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MPCloseBtn.png; sourceTree = "<group>"; };
-		665780521F32210600A3910E /* MPCloseBtn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MPCloseBtn@2x.png"; sourceTree = "<group>"; };
-		665780531F32210600A3910E /* MPCloseBtn@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MPCloseBtn@3x.png"; sourceTree = "<group>"; };
-		665780541F32210600A3910E /* MPCloseButtonX.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MPCloseButtonX.png; sourceTree = "<group>"; };
-		665780551F32210600A3910E /* MPCloseButtonX@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MPCloseButtonX@2x.png"; sourceTree = "<group>"; };
-		665780561F32210600A3910E /* MPCloseButtonX@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MPCloseButtonX@3x.png"; sourceTree = "<group>"; };
-		665780571F32210600A3910E /* MPDAAIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MPDAAIcon.png; sourceTree = "<group>"; };
-		665780581F32210600A3910E /* MPDAAIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MPDAAIcon@2x.png"; sourceTree = "<group>"; };
-		665780591F32210600A3910E /* MPDAAIcon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MPDAAIcon@3x.png"; sourceTree = "<group>"; };
-		6657805A1F32210600A3910E /* MPMutedBtn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MPMutedBtn.png; sourceTree = "<group>"; };
-		6657805B1F32210600A3910E /* MPMutedBtn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MPMutedBtn@2x.png"; sourceTree = "<group>"; };
-		6657805C1F32210600A3910E /* MPMutedBtn@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MPMutedBtn@3x.png"; sourceTree = "<group>"; };
-		6657805D1F32210600A3910E /* MPPlayBtn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MPPlayBtn.png; sourceTree = "<group>"; };
-		6657805E1F32210600A3910E /* MPPlayBtn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MPPlayBtn@2x.png"; sourceTree = "<group>"; };
-		6657805F1F32210600A3910E /* MPPlayBtn@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MPPlayBtn@3x.png"; sourceTree = "<group>"; };
-		665780601F32210600A3910E /* MPUnmutedBtn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MPUnmutedBtn.png; sourceTree = "<group>"; };
-		665780611F32210600A3910E /* MPUnmutedBtn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MPUnmutedBtn@2x.png"; sourceTree = "<group>"; };
-		665780621F32210600A3910E /* MPUnmutedBtn@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MPUnmutedBtn@3x.png"; sourceTree = "<group>"; };
-		665780631F32210600A3910E /* MRAID.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = MRAID.bundle; sourceTree = "<group>"; };
-		665780641F32210600A3910E /* StartApp.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = StartApp.bundle; sourceTree = "<group>"; };
-		665780651F32210600A3910E /* TapjoyResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = TapjoyResources.bundle; sourceTree = "<group>"; };
+		787A473820ADCE9D003E5C95 /* StartApp.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = StartApp.bundle; sourceTree = "<group>"; };
+		787A473920ADCE9D003E5C95 /* TapjoyResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = TapjoyResources.bundle; sourceTree = "<group>"; };
+		787A473A20ADCE9D003E5C95 /* Appodeal.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Appodeal.bundle; sourceTree = "<group>"; };
+		787A473B20ADCE9D003E5C95 /* MRAID.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = MRAID.bundle; sourceTree = "<group>"; };
+		787A473C20ADCE9D003E5C95 /* MPCloseButtonX.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MPCloseButtonX.png; sourceTree = "<group>"; };
+		787A473D20ADCE9E003E5C95 /* MPDAAIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MPDAAIcon.png; sourceTree = "<group>"; };
+		787A473E20ADCE9E003E5C95 /* MPUnmutedBtn@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MPUnmutedBtn@3x.png"; sourceTree = "<group>"; };
+		787A473F20ADCE9E003E5C95 /* MPCloseBtn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MPCloseBtn@2x.png"; sourceTree = "<group>"; };
+		787A474020ADCE9E003E5C95 /* MPCloseButtonX@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MPCloseButtonX@2x.png"; sourceTree = "<group>"; };
+		787A474120ADCE9E003E5C95 /* MPMutedBtn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MPMutedBtn@2x.png"; sourceTree = "<group>"; };
+		787A474220ADCE9E003E5C95 /* MPMutedBtn@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MPMutedBtn@3x.png"; sourceTree = "<group>"; };
+		787A474320ADCE9E003E5C95 /* MPDAAIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MPDAAIcon@2x.png"; sourceTree = "<group>"; };
+		787A474420ADCE9E003E5C95 /* MPCloseBtn@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MPCloseBtn@3x.png"; sourceTree = "<group>"; };
+		787A474520ADCE9E003E5C95 /* MPDAAIcon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MPDAAIcon@3x.png"; sourceTree = "<group>"; };
+		787A474620ADCE9E003E5C95 /* MPCloseButtonX@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MPCloseButtonX@3x.png"; sourceTree = "<group>"; };
+		787A474720ADCE9F003E5C95 /* MPMutedBtn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MPMutedBtn.png; sourceTree = "<group>"; };
+		787A474820ADCE9F003E5C95 /* MPPlayBtn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MPPlayBtn.png; sourceTree = "<group>"; };
+		787A474920ADCE9F003E5C95 /* MPPlayBtn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MPPlayBtn@2x.png"; sourceTree = "<group>"; };
+		787A474A20ADCE9F003E5C95 /* MPCloseBtn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MPCloseBtn.png; sourceTree = "<group>"; };
+		787A474B20ADCE9F003E5C95 /* MPPlayBtn@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MPPlayBtn@3x.png"; sourceTree = "<group>"; };
+		787A474C20ADCE9F003E5C95 /* MPAdBrowserController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MPAdBrowserController.xib; sourceTree = "<group>"; };
+		787A474D20ADCE9F003E5C95 /* MPUnmutedBtn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MPUnmutedBtn.png; sourceTree = "<group>"; };
+		787A474E20ADCE9F003E5C95 /* MPUnmutedBtn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MPUnmutedBtn@2x.png"; sourceTree = "<group>"; };
 		8084D1F0A307440EC73CBFCA /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		A59029FC274D2913407D7798 /* moe-main-interfaces.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "moe-main-interfaces.m"; path = "../build/moe/main/ui-headers/moe-main-interfaces.m"; sourceTree = "<group>"; };
 		C995F7161EAA5D0A003E34E1 /* assets */ = {isa = PBXFileReference; lastKnownFileType = folder; name = assets; path = ../../android/assets; sourceTree = "<group>"; };
@@ -229,7 +225,6 @@
 			isa = PBXGroup;
 			children = (
 				662D6D3A1F33E0B800F76ABE /* Social.framework */,
-				6657804C1F32210600A3910E /* Resources */,
 				6657804A1F32209300A3910E /* ImageIO.framework */,
 				660A78EC1EC0754300F954E2 /* AdSupport.framework */,
 				660A78ED1EC0754300F954E2 /* CFNetwork.framework */,
@@ -310,6 +305,29 @@
 		58C6F5261DA66CB600309CB6 /* ios-moe */ = {
 			isa = PBXGroup;
 			children = (
+				787A473A20ADCE9D003E5C95 /* Appodeal.bundle */,
+				787A474C20ADCE9F003E5C95 /* MPAdBrowserController.xib */,
+				787A474A20ADCE9F003E5C95 /* MPCloseBtn.png */,
+				787A473F20ADCE9E003E5C95 /* MPCloseBtn@2x.png */,
+				787A474420ADCE9E003E5C95 /* MPCloseBtn@3x.png */,
+				787A473C20ADCE9D003E5C95 /* MPCloseButtonX.png */,
+				787A474020ADCE9E003E5C95 /* MPCloseButtonX@2x.png */,
+				787A474620ADCE9E003E5C95 /* MPCloseButtonX@3x.png */,
+				787A473D20ADCE9E003E5C95 /* MPDAAIcon.png */,
+				787A474320ADCE9E003E5C95 /* MPDAAIcon@2x.png */,
+				787A474520ADCE9E003E5C95 /* MPDAAIcon@3x.png */,
+				787A474720ADCE9F003E5C95 /* MPMutedBtn.png */,
+				787A474120ADCE9E003E5C95 /* MPMutedBtn@2x.png */,
+				787A474220ADCE9E003E5C95 /* MPMutedBtn@3x.png */,
+				787A474820ADCE9F003E5C95 /* MPPlayBtn.png */,
+				787A474920ADCE9F003E5C95 /* MPPlayBtn@2x.png */,
+				787A474B20ADCE9F003E5C95 /* MPPlayBtn@3x.png */,
+				787A474D20ADCE9F003E5C95 /* MPUnmutedBtn.png */,
+				787A474E20ADCE9F003E5C95 /* MPUnmutedBtn@2x.png */,
+				787A473E20ADCE9E003E5C95 /* MPUnmutedBtn@3x.png */,
+				787A473B20ADCE9D003E5C95 /* MRAID.bundle */,
+				787A473820ADCE9D003E5C95 /* StartApp.bundle */,
+				787A473920ADCE9D003E5C95 /* TapjoyResources.bundle */,
 				58C6F5381DA66CB600309CB6 /* Info.plist */,
 				581773851E37A0F0004E28A9 /* Default-375w-667h@2x.png */,
 				581773861E37A0F0004E28A9 /* Default-414w-736h@3x.png */,
@@ -335,38 +353,6 @@
 				8084D1F0A307440EC73CBFCA /* main.cpp */,
 			);
 			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		6657804C1F32210600A3910E /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				6657804D1F32210600A3910E /* Appodeal.bundle */,
-				6657804E1F32210600A3910E /* button-close-default.png */,
-				6657804F1F32210600A3910E /* button-close-highlighted.png */,
-				665780501F32210600A3910E /* MPAdBrowserController.xib */,
-				665780511F32210600A3910E /* MPCloseBtn.png */,
-				665780521F32210600A3910E /* MPCloseBtn@2x.png */,
-				665780531F32210600A3910E /* MPCloseBtn@3x.png */,
-				665780541F32210600A3910E /* MPCloseButtonX.png */,
-				665780551F32210600A3910E /* MPCloseButtonX@2x.png */,
-				665780561F32210600A3910E /* MPCloseButtonX@3x.png */,
-				665780571F32210600A3910E /* MPDAAIcon.png */,
-				665780581F32210600A3910E /* MPDAAIcon@2x.png */,
-				665780591F32210600A3910E /* MPDAAIcon@3x.png */,
-				6657805A1F32210600A3910E /* MPMutedBtn.png */,
-				6657805B1F32210600A3910E /* MPMutedBtn@2x.png */,
-				6657805C1F32210600A3910E /* MPMutedBtn@3x.png */,
-				6657805D1F32210600A3910E /* MPPlayBtn.png */,
-				6657805E1F32210600A3910E /* MPPlayBtn@2x.png */,
-				6657805F1F32210600A3910E /* MPPlayBtn@3x.png */,
-				665780601F32210600A3910E /* MPUnmutedBtn.png */,
-				665780611F32210600A3910E /* MPUnmutedBtn@2x.png */,
-				665780621F32210600A3910E /* MPUnmutedBtn@3x.png */,
-				665780631F32210600A3910E /* MRAID.bundle */,
-				665780641F32210600A3910E /* StartApp.bundle */,
-				665780651F32210600A3910E /* TapjoyResources.bundle */,
-			);
-			path = Resources;
 			sourceTree = "<group>";
 		};
 		A77019D7A44AF8D14A5383C7 /* Multi-OS Engine */ = {
@@ -465,43 +451,41 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				787A476220ADCEA0003E5C95 /* MPPlayBtn@3x.png in Resources */,
+				787A475520ADCEA0003E5C95 /* MPUnmutedBtn@3x.png in Resources */,
 				C995F7171EAA5D0A003E34E1 /* assets in Resources */,
-				665780691F32210600A3910E /* MPAdBrowserController.xib in Resources */,
-				665780741F32210600A3910E /* MPMutedBtn@2x.png in Resources */,
 				581773961E37A0F0004E28A9 /* Default@2x.png in Resources */,
 				5817739C1E37A0F0004E28A9 /* Icon@2x.png in Resources */,
-				6657807A1F32210600A3910E /* MPUnmutedBtn@2x.png in Resources */,
-				665780781F32210600A3910E /* MPPlayBtn@3x.png in Resources */,
-				6657806F1F32210600A3910E /* MPCloseButtonX@3x.png in Resources */,
-				665780671F32210600A3910E /* button-close-default.png in Resources */,
-				665780751F32210600A3910E /* MPMutedBtn@3x.png in Resources */,
-				6657807B1F32210600A3910E /* MPUnmutedBtn@3x.png in Resources */,
+				787A475220ADCEA0003E5C95 /* MRAID.bundle in Resources */,
 				581773911E37A0F0004E28A9 /* Default-375w-667h@2x.png in Resources */,
 				5817739A1E37A0F0004E28A9 /* Icon-72@2x.png in Resources */,
+				787A475820ADCEA0003E5C95 /* MPMutedBtn@2x.png in Resources */,
 				581773991E37A0F0004E28A9 /* Icon-72.png in Resources */,
-				665780791F32210600A3910E /* MPUnmutedBtn.png in Resources */,
-				6657806A1F32210600A3910E /* MPCloseBtn.png in Resources */,
 				581773971E37A0F0004E28A9 /* Default@2x~ipad.png in Resources */,
-				665780661F32210600A3910E /* Appodeal.bundle in Resources */,
-				665780701F32210600A3910E /* MPDAAIcon.png in Resources */,
+				787A475D20ADCEA0003E5C95 /* MPCloseButtonX@3x.png in Resources */,
 				581773941E37A0F0004E28A9 /* Default-1024w-1366h@2x~ipad.png in Resources */,
+				787A474F20ADCEA0003E5C95 /* StartApp.bundle in Resources */,
+				787A475320ADCEA0003E5C95 /* MPCloseButtonX.png in Resources */,
 				581773981E37A0F0004E28A9 /* Default~ipad.png in Resources */,
-				665780711F32210600A3910E /* MPDAAIcon@2x.png in Resources */,
-				665780771F32210600A3910E /* MPPlayBtn@2x.png in Resources */,
-				6657806D1F32210600A3910E /* MPCloseButtonX.png in Resources */,
+				787A475420ADCEA0003E5C95 /* MPDAAIcon.png in Resources */,
+				787A475A20ADCEA0003E5C95 /* MPDAAIcon@2x.png in Resources */,
+				787A476320ADCEA0003E5C95 /* MPAdBrowserController.xib in Resources */,
+				787A475920ADCEA0003E5C95 /* MPMutedBtn@3x.png in Resources */,
+				787A476020ADCEA0003E5C95 /* MPPlayBtn@2x.png in Resources */,
+				787A475E20ADCEA0003E5C95 /* MPMutedBtn.png in Resources */,
+				787A475020ADCEA0003E5C95 /* TapjoyResources.bundle in Resources */,
+				787A475620ADCEA0003E5C95 /* MPCloseBtn@2x.png in Resources */,
 				581773921E37A0F0004E28A9 /* Default-414w-736h@3x.png in Resources */,
-				6657806B1F32210600A3910E /* MPCloseBtn@2x.png in Resources */,
-				665780681F32210600A3910E /* button-close-highlighted.png in Resources */,
-				665780731F32210600A3910E /* MPMutedBtn.png in Resources */,
-				665780721F32210600A3910E /* MPDAAIcon@3x.png in Resources */,
+				787A475B20ADCEA0003E5C95 /* MPCloseBtn@3x.png in Resources */,
+				787A476120ADCEA0003E5C95 /* MPCloseBtn.png in Resources */,
 				5817739B1E37A0F0004E28A9 /* Icon.png in Resources */,
-				6657807D1F32210600A3910E /* StartApp.bundle in Resources */,
+				787A475C20ADCEA0003E5C95 /* MPDAAIcon@3x.png in Resources */,
+				787A476420ADCEA0003E5C95 /* MPUnmutedBtn.png in Resources */,
+				787A475120ADCEA0003E5C95 /* Appodeal.bundle in Resources */,
+				787A476520ADCEA0003E5C95 /* MPUnmutedBtn@2x.png in Resources */,
+				787A475720ADCEA0003E5C95 /* MPCloseButtonX@2x.png in Resources */,
+				787A475F20ADCEA0003E5C95 /* MPPlayBtn.png in Resources */,
 				581773931E37A0F0004E28A9 /* Default-568h@2x.png in Resources */,
-				6657806E1F32210600A3910E /* MPCloseButtonX@2x.png in Resources */,
-				665780761F32210600A3910E /* MPPlayBtn.png in Resources */,
-				6657807C1F32210600A3910E /* MRAID.bundle in Resources */,
-				6657806C1F32210600A3910E /* MPCloseBtn@3x.png in Resources */,
-				6657807E1F32210600A3910E /* TapjoyResources.bundle in Resources */,
 				581773951E37A0F0004E28A9 /* Default.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

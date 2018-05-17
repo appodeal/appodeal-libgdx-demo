@@ -6,6 +6,7 @@ import apple.foundation.NSArray;
 import apple.foundation.NSDate;
 import apple.foundation.NSDictionary;
 import apple.foundation.NSMethodSignature;
+import apple.foundation.NSNumber;
 import apple.foundation.NSSet;
 import apple.uikit.UIView;
 import apple.uikit.UIViewController;
@@ -397,6 +398,11 @@ public class Appodeal extends NSObject {
 	@Generated
 	@Selector("superclass")
 	public static native Class superclass_static();
+
+	@Generated
+	@Selector("trackInAppPurchase:currency:")
+	public static native void trackInAppPurchaseCurrency(NSNumber amount,
+			String currency);
 
 	@Generated
 	@Selector("version")

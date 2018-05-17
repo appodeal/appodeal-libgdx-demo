@@ -177,9 +177,9 @@ public class APDRewardedVideo extends NSObject {
 	public static native boolean resolveInstanceMethod(SEL sel);
 
 	@Generated
-	@Selector("rewardForPlacement:")
+	@Selector("reward")
 	@MappedReturn(ObjCObjectMapper.class)
-	public native APDReward rewardForPlacement(String placement);
+	public native APDReward reward();
 
 	@Generated
 	@Selector("setCustomSdk:")

@@ -257,6 +257,11 @@ public class iOSGdxAppodeal implements AppodealInterface {
         //handled by os
     }
 
+    @Override
+    public void destroy(int adType) {
+
+    }
+
     private UIViewController getRootViewController() {
         return ((IOSApplication) Gdx.app).getUIViewController();
     }

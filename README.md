@@ -2,17 +2,41 @@
 
 libGDX plugin for cross-platform Appodeal SDK support
 
-### Plugin files integration
+## How to Update Plugin Manually
+
+First of all clone this repository.
+
+### Android Part:
+
++ Download new Appodeal Android SDK from [Appodeal Docs](https://www.appodeal.com/sdk/choose_framework) -> Android. Unzip it somewhere.
++ Copy new AndroidManifest.xml tags from [Appodeal Docs](https://www.appodeal.com/sdk/choose_framework) -> Android. And replace content between `<activity	... <category android:name="android.intent.category.LAUNCHER" /></intent-filter></activity>` and closing `</application>` tag with copied tags.
++ Replace old `jars` with new inside [android/libs](/android/libs/).
++ Replace old `aars` with new inside [android/libs/aar_repository](/android/libs/aar_repository/).
++ Check for any native SDK API changes in [AndroidGdxAppodeal.java](/android/src/com/appodeal/gdx/android/AndroidGdxAppodeal.java).
++ Android ready for build.
+
+### iOS Part:
+
++ Download new Appodeal iOS SDK from [Appodeal Docs](https://www.appodeal.com/sdk/choose_framework) -> iOS -> Objective-C. Unzip it somewhere.
++ Place new `Appodeal.framework` under `ios-moe/xcode` folder.
++ Place contents of `Resources` folder under `ios-moe/xcode/ios-moe` folder. If `Resources` does not exists inside new SDK archive, then open `ios-moe.xcodeproj` navigate into `ios-moe` and remove highlighted with red color resouces.
++ Check for any changes in `Build Phases` -> `Link Binary With Libraries` in corresponding to changes in 3 step of 5.3 Manual integration in [Appodeal Docs](https://www.appodeal.com/sdk/choose_framework) -> iOS -> Objective-C.
++ Remove old bindings, to do that navigate into [org](/ios-moe/src/) folder and completely remove it.
++ Open [AppodealMOE.nbc](/ios-moe/AppodealMOE.nbc) and press `Generate Bindings`. It will generate new binding for the new Appodeal iOS SDK.
++ Check for any native SDK API changes in [iOSGdxAppodeal.java](/ios-moe/src/com/appodeal/gdx/ios/iOSGdxAppodeal.java).
++ iOS ready for build.
+
+## Plugin files integration
 
 Download Plugin here and unzip it somewhere.
 
-#### Core Module
+### Core Module
 
 Copy com folder from core/src folder to your source folder inside core module. Usually it is named src or java/main.
 
-#### iOS Module
+### iOS Module
 
-+ Download Appodeal iOS SDK from [Docs page](appodeal.com/sdk) -> iOS -> Objective-C, unzip and place `Appodeal.framework` under ios-moe/xcode folder.
++ Download Appodeal iOS SDK [here](http://bit.ly/appodeal-ios-sdk-2-1-10-release) -> iOS -> Objective-C, unzip and place `Appodeal.framework` under `ios-moe/xcode` folder.
 + Copy contents of src folder from `core/src` folder to your source folder inside `ios-moe` module. Usually it is named `src` or `java/main`.
 + Open `ios-moe.xcodeproj` inside `ios-moe/xcode` folder and drag and drop `Appodeal.framework` and `Resorces` folder from finder to xcode project hierarchy under project group, click on `Copy if needed` checkmark and then click OK.
 + Move to `Build Settings` of your xcode project, find there `Other Linker Flags`, double click it and add there `-ObjC` flag.
@@ -58,7 +82,7 @@ WebKit
 </dict>
 ```
 
-#### Android Module
+### Android Module
 
 + Copy contents of libs folder from android/libs folder to your android/libs folder.
 + Copy com folder from android/src folder to your source folder inside core module. Usually it is named src or java/main.
